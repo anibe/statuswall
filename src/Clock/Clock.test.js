@@ -10,7 +10,15 @@ it('renders without crashing', () => {
   ReactDOM.render(<Clock />, div);
 });
 
-it('shows the current time', () => {
-  const clock = new Clock();
-  expect(clock.showTime()).toBe('The time is now!');
+describe('When the Clock component has rendered',() => {
+  let clock;
+  beforeEach(() => {
+    clock = new Clock();
+  });
+
+  it('shows the current time', () => {
+    expect(clock.showTime()).toBe('The time is now!');
+  });
+
+  
 });
