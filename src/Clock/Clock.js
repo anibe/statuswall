@@ -3,8 +3,31 @@ import './Clock.css';
 
 class Clock extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+    this.format = props.format;
+  }
+
   showTime() {
-      return 'The time is now!';
+      return this.state.date.toLocaleTimeString();
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
   }
 
   render() {

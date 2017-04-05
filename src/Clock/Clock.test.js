@@ -11,13 +11,17 @@ it('renders without crashing', () => {
 });
 
 describe('When the Clock component has rendered',() => {
-  let clock;
+  let clock, rightNow;
+  const props;
+
   beforeEach(() => {
-    clock = new Clock();
+    props.format = 24;
+    clock = new Clock(props);
+    rightNow = new Date()
   });
 
   it('shows the current time', () => {
-    expect(clock.showTime()).toBe('The time is now!');
+    expect(clock.showTime()).toBe(rightNow.toLocaleTimeString());
   });
 
   
