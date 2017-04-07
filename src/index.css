@@ -22,8 +22,10 @@ body {
 .applet .main-title {
   color: #fff;
   font-size: 12vw;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
 }
 
 .applet .sub-title {
+  color: rgba(255,255,255,0.5);
   font-size: 6vw;
 }
