@@ -11,7 +11,11 @@ class Clock extends Component {
   }
 
   showTime() {
-      return this.state.date.toLocaleTimeString();
+    return this.state.date.toLocaleTimeString();
+  }
+
+  showDate() {
+    return this.state.date.toLocaleDateString();
   }
 
   componentDidMount() {
@@ -32,9 +36,14 @@ class Clock extends Component {
   }
 
   render() {
+    const inlineStyles = {
+      backgroundColor: this.colour
+    };
+
     return (
-      <div className="Clock" style={{ backgroundColor: this.colour }}>
-        <p>{this.showTime()}</p>
+      <div className="Clock applet" style={inlineStyles}>
+        <div className="main-title">{this.showTime()}</div>
+        <div className="sub-title">{this.showDate()}</div>
       </div>
     );
   }
