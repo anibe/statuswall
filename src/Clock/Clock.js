@@ -15,7 +15,7 @@ class Clock extends Component {
   }
 
   showDate() {
-    return this.state.date.toLocaleDateString();
+    return this.state.date.toDateString();
   }
 
   componentDidMount() {
