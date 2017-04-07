@@ -5,17 +5,18 @@ import Clock from './Clock';
 
 // const clock = TestUtils.renderIntoDocument(<Clock />);
 
-it('renders without crashing', () => {
+it('Clock renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Clock />, div);
 });
 
 describe('When the Clock component has rendered',() => {
   let clock, rightNow;
-  const props;
+  const props = {
+    format: 24
+  };
 
   beforeEach(() => {
-    props.format = 24;
     clock = new Clock(props);
     rightNow = new Date()
   });
@@ -23,6 +24,5 @@ describe('When the Clock component has rendered',() => {
   it('shows the current time', () => {
     expect(clock.showTime()).toBe(rightNow.toLocaleTimeString());
   });
-
   
 });

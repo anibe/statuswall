@@ -7,6 +7,7 @@ class Clock extends Component {
     super(props);
     this.state = {date: new Date()};
     this.format = props.format;
+    this.colour = props.colour;
   }
 
   showTime() {
@@ -32,7 +33,7 @@ class Clock extends Component {
 
   render() {
     return (
-      <div className="Clock">
+      <div className="Clock" style={{ backgroundColor: this.colour }}>
         <p>{this.showTime()}</p>
       </div>
     );
