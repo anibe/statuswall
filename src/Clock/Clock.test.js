@@ -24,6 +24,14 @@ describe('When the Clock component has rendered',() => {
     seconds = testDate.getSeconds();
   });
 
+  // describe('and the time format is "24"', () => {
+
+  // });
+
+  // describe('and the time format is "12"', () => {
+
+  // });  
+
   it('shows the current time with hours, minutes and seconds defined', () => {
     dateObj = [hours, minutes, seconds];
     expect(clock.showTime()).toEqual(dateObj);

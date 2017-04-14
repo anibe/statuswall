@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.settings = {
       'Clock': {
-        'format': 24,
+        'format': 12,
         'colour':'#CA8FCA'
       }
     }

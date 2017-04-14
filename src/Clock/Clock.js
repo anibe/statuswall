@@ -6,7 +6,7 @@ class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {date: new Date()};
-    this.format = props.format;
+    this.is24HourFormat = (props.format === 24);
     this.colour = props.colour;
   }
 
@@ -44,16 +44,19 @@ class Clock extends Component {
     const inlineStyles = {
       backgroundColor: this.colour
     };
-    let time = this.showTime();
+    let timeArray = this.showTime(),
+        hours = (this.is24HourFormat && timeArray[0] > 12) ? timeArray[0] : timeArray[0]-12,
+        minutes = timeArray[1],
+        seconds = timeArray[2];
 
     return (
       <div className="Clock applet" style={inlineStyles}>
         <div className="main-title time">
-          <span className="hours">{this.formatTime(time[0])}</span>:
-          <span className="minutes">{this.formatTime(time[1])}</span>
+          <span className="hours">{hours}</span>:
+          <span className="minutes">{this.formatTime(minutes)}</span>
           <span className="seconds blink">
             :
-            {this.formatTime(time[2])}
+            {this.formatTime(seconds)}
           </span>
         </div>
         <div className="sub-title date">{this.showDate()}</div>
