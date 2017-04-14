@@ -11,18 +11,28 @@ it('Clock renders without crashing', () => {
 });
 
 describe('When the Clock component has rendered',() => {
-  let clock, rightNow;
+  let clock, testDate, hours, minutes, seconds, dateObj;
   const props = {
     format: 24
   };
 
   beforeEach(() => {
     clock = new Clock(props);
-    rightNow = new Date()
+    testDate = new Date();
+    hours = testDate.getHours();
+    minutes = testDate.getMinutes();
+    seconds = testDate.getSeconds();
   });
 
-  it('shows the current time', () => {
-    expect(clock.showTime()).toBe(rightNow.toLocaleTimeString());
+  it('shows the current time with hours, minutes and seconds defined', () => {
+    dateObj = [hours, minutes, seconds];
+    expect(clock.showTime()).toEqual(dateObj);
   });
+
+  it('formatTime should format time values into 2 digits', () => {
+    expect(clock.formatTime(12)).toBe("12");
+    expect(clock.formatTime(2)).toBe("02");
+    expect(clock.formatTime(0)).toBe("00");
+  });  
   
 });
