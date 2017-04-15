@@ -6,7 +6,7 @@ class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {date: new Date()};
-    this.is24HourFormat = (props.format === 24);
+    this.is24HourFormat = props.is24HourFormat;
     this.colour = props.colour;
   }
 
@@ -45,7 +45,7 @@ class Clock extends Component {
       backgroundColor: this.colour
     };
     let timeArray = this.showTime(),
-        hours = (this.is24HourFormat && timeArray[0] > 12) ? timeArray[0] : timeArray[0]-12,
+        hours = (!this.is24HourFormat && timeArray[0] > 12) ? timeArray[0]-12 : timeArray[0],
         minutes = timeArray[1],
         seconds = timeArray[2];
 
