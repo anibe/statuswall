@@ -19,6 +19,10 @@ class Clock extends Component {
     return ("0" + digit).slice(-2);
   }
 
+  formatHours(hours) {
+    return (!this.is24HourFormat && hours > 12) ? hours-12 : hours;
+  }
+
   showDate() {
     return this.state.date.toDateString();
   }
@@ -45,7 +49,7 @@ class Clock extends Component {
       backgroundColor: this.colour
     };
     let timeArray = this.showTime(),
-        hours = (!this.is24HourFormat && timeArray[0] > 12) ? timeArray[0]-12 : timeArray[0],
+        hours = this.formatHours(timeArray[0]),
         minutes = timeArray[1],
         seconds = timeArray[2];
 

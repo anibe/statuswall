@@ -18,7 +18,7 @@ class App extends Component {
     let settings = this.settings;
     return (
       <div className="App">
-        <Clock format={ settings.Clock.format } colour={settings.Clock.colour} />
+        <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
   }

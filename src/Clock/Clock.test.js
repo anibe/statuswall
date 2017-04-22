@@ -12,35 +12,69 @@ it('Clock renders without crashing', () => {
 
 describe('When the Clock component has rendered',() => {
   let clock, testDate, hours, minutes, seconds, dateObj;
-  const props = {
-    format: 24
-  };
 
-  beforeEach(() => {
-    clock = new Clock(props);
-    testDate = new Date();
-    hours = testDate.getHours();
-    minutes = testDate.getMinutes();
-    seconds = testDate.getSeconds();
+  describe('and the time format is "24"', () => {
+
+    const props = {
+      is24HourFormat: true
+    };
+
+    beforeEach(() => {
+      clock = new Clock(props);
+      testDate = new Date();
+      hours = testDate.getHours();
+      minutes = testDate.getMinutes();
+      seconds = testDate.getSeconds();
+    });
+
+    it('shows the current time with hours, minutes and seconds defined', () => {
+      dateObj = [hours, minutes, seconds];
+      expect(clock.showTime()).toEqual(dateObj);
+    });
+
+    it('formatTime should format time values into 2 digits', () => {
+      expect(clock.formatTime(12)).toBe("12");
+      expect(clock.formatTime(2)).toBe("02");
+      expect(clock.formatTime(0)).toBe("00");
+    });
+
+    it('should show the correct 24 hour time format', () => {
+      expect(clock.formatHours(14)).toBe(14);
+      expect(clock.formatHours(23)).toBe(23);
+      expect(clock.formatHours(0)).toBe(0);
+    });    
   });
 
-  // describe('and the time format is "24"', () => {
+  describe('and the time format is "12"', () => {
 
-  // });
+    const props = {
+      is24HourFormat: false
+    };
 
-  // describe('and the time format is "12"', () => {
+    beforeEach(() => {
+      clock = new Clock(props);
+      testDate = new Date();
+      hours = testDate.getHours();
+      minutes = testDate.getMinutes();
+      seconds = testDate.getSeconds();
+    });
 
-  // });  
+    it('shows the current time with hours, minutes and seconds defined', () => {
+      dateObj = [hours, minutes, seconds];
+      expect(clock.showTime()).toEqual(dateObj);
+    });
 
-  it('shows the current time with hours, minutes and seconds defined', () => {
-    dateObj = [hours, minutes, seconds];
-    expect(clock.showTime()).toEqual(dateObj);
-  });
+    it('formatTime should format time values into 2 digits', () => {
+      expect(clock.formatTime(12)).toBe("12");
+      expect(clock.formatTime(2)).toBe("02");
+      expect(clock.formatTime(0)).toBe("00");
+    });
 
-  it('formatTime should format time values into 2 digits', () => {
-    expect(clock.formatTime(12)).toBe("12");
-    expect(clock.formatTime(2)).toBe("02");
-    expect(clock.formatTime(0)).toBe("00");
+    it('should show the correct 12 hour time format', () => {
+      expect(clock.formatHours(14)).toBe(2);
+      expect(clock.formatHours(23)).toBe(11);
+      // expect(clock.formatHours(0)).toBe(12);
+    });
   });  
   
 });
