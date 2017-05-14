@@ -25,6 +25,8 @@ describe('When the Clock component has rendered',() => {
       hours = testDate.getHours();
       minutes = testDate.getMinutes();
       seconds = testDate.getSeconds();
+
+      spyOn(clock, ['setState']);
     });
 
     it('shows the current time with hours, minutes and seconds defined', () => {
@@ -42,7 +44,22 @@ describe('When the Clock component has rendered',() => {
       expect(clock.formatHours(14)).toBe(14);
       expect(clock.formatHours(23)).toBe(23);
       expect(clock.formatHours(0)).toBe(0);
-    });    
+    });
+
+    it('should update the date value of setStatte with the current date', ()=> {
+      clock.tick();
+      expect(clock.setState).toHaveBeenCalledWith({ date: new Date()});
+    });
+
+    describe('And when the component successfully mounts', ()=>{
+      beforeEach(()=>{
+        clock.componentDidMount();
+      });
+
+      it('should update the timerId every second', ()=>{
+        expect(clock.timerID).toBe(4); // What is 4?
+      });
+    }); 
   });
 
   describe('and the time format is "12"', () => {
