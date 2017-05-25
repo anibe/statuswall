@@ -1,3 +1,16 @@
+@keyframes animate-reveal {
+  0%   { opacity: 0; transform: scale(0.75); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 .App {
   text-align: center;
+}
+
+.App .applet:not(.active) {
+  display: none;
+}
+
+.App .active {
+  animation: 'animate-reveal' 0.3s;
 }

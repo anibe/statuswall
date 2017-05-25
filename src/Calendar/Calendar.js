@@ -10,7 +10,7 @@ class Calendar extends Component {
         return (
             <div className="Calendar applet" style={inlineStyles}>
                 <div className="main-title">Calendar</div>
-                <div className="sub-title">Calendar</div>
+                <div className="sub-title">What have we got planned this week?</div>
             </div>
         );
     }

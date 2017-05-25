@@ -19,7 +19,19 @@ describe('when it initialises', () => {
     app = new App();
   });
 
+  describe('when all components have loaded', () => {
+    
+    beforeEach(()=>{
+      app.componentDidMount();
+    });
+
+    it('should get the list of all applet DOM nodes', ()=>{
+      
+    });
+  });
+
   xit('should get the settings', () => {
     expect(app.settings).toEqual(settings);
   });
+
 });
