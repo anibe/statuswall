@@ -33,7 +33,7 @@ class App extends Component {
         index = 0;
 
     this.timerID = setInterval(()=>{
-      appletNodes.forEach(function(node){
+      [].forEach.call(appletNodes, function(node){
         node.classList.remove('active');
       });
       appletNodes[index].classList.add('active');
