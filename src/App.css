@@ -1,5 +1,5 @@
 @keyframes animate-reveal {
-  0%   { opacity: 0; transform: scale(0.75); }
+  0%   { opacity: 0; transform: scale(0.2); }
   100% { opacity: 1; transform: scale(1); }
 }
 
@@ -11,6 +11,55 @@
   display: none;
 }
 
+.App .applet.float:not(.active) {
+  background-color: transparent !important;
+  font-size: 5rem;
+  margin-top: 30px;
+  position: fixed;
+  display: block;
+  text-align: center;
+  width: 100%;
+  top: 0;
+  opacity: 0.5;
+}
+
+.App .applet.float:not(.active) .main-title > * {
+  display: inline;
+  min-width: auto;
+}
+
+.App .applet.float:not(.active) .seconds,
+.App .applet.float:not(.active) .date {
+  display: none;
+}
+
+.App .applet .main-title {
+  color: #fff;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+}
+
+.App .applet .sub-title {
+  color: rgba(255,255,255,0.5);
+}
+
 .App .active {
   animation: 'animate-reveal' 0.3s;
+}
+
+.App .applet.active {
+  position: fixed;
+  height: 105%; /* To help hide address bar */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+}
+
+.App .applet.active .main-title {
+  font-size: 24vw;
+}
+
+.App .applet.active .sub-title {
+  font-size: 12vw;
 }

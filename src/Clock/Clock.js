@@ -54,7 +54,7 @@ class Clock extends Component {
         seconds = timeArray[2];
 
     return (
-      <div className="Clock applet" style={inlineStyles}>
+      <div className="Clock applet float" style={inlineStyles}>
         <div className="main-title time">
           <span className="hours">{hours}</span>:
           <span className="minutes">{this.formatTime(minutes)}</span>

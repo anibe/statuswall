@@ -45,11 +45,10 @@ class App extends Component {
     let settings = this.settings;
     return (
       <div className="App">
-        <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
         <Calendar />
         <Weather />
         <OnThisDay />
-        <div><br/><br/><br/><br/>Loading...</div>
+        <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
   }
