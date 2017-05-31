@@ -1,6 +1,17 @@
 import React, {Component} from 'react';
 
 class Weather extends Component {
+
+    constructor(){
+        super();
+        this.apiEndpoint = 'http://api.wunderground.com/api/{api-key}/forecast/q/';
+        this.location = 'UK/Hemel%20Hempstead.json';
+    }
+
+    getForecast() {
+
+    }
+
     render() {
         const inlineStyles = {
             backgroundColor: '#cab08f'
@@ -8,8 +19,8 @@ class Weather extends Component {
 
         return (
             <div className="Weather applet" style={inlineStyles}>
-                <div className="main-title">Weather</div>
-                <div className="sub-title">what's it like outside</div>
+                <div className="main-title">26&deg;c <span>🌤</span></div>
+                <div className="sub-title">Hemel Hempstead</div>
             </div>
         );
     }

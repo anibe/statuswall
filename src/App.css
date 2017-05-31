@@ -63,3 +63,11 @@
 .App .applet.active .sub-title {
   font-size: 12vw;
 }
+
+.App .applet.in-progress {
+  background-image: url(loading.gif);
+  background-repeat: no-repeat;
+  background-position: 50% 65%;
+  background-size: 10%;
+  opacity: 0.3;
+}

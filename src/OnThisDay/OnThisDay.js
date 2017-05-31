@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './OnThisDay.css';
 
 class OnThisDay extends Component {
     render() {
@@ -7,9 +8,9 @@ class OnThisDay extends Component {
         };
 
         return (
-            <div className="OnThisDay applet" style={inlineStyles}>
-                <div className="main-title">On This Day</div>
-                <div className="sub-title">Events in history that happened today</div>
+            <div className="OnThisDay applet in-progress" style={inlineStyles}>
+                <div className="main-title"></div>
+                <div className="sub-title">Today in history</div>
             </div>
         );
     }

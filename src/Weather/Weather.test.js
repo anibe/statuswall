@@ -15,13 +15,11 @@ describe('When the Weather component has rendered',() => {
     beforeEach(()=>{
 
     });
-
-    
-
-  }); 
     // it should get current weather from api
 
     // it should set a cookie for 6 hours to prevent further calls
+    
+  }); 
 
 // and when the polling cookie is still valid
 
