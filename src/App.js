@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Clock from './Clock/Clock';
-import Calendar from './Calendar/Calendar';
+import config from './config.json';
+//import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
-import OnThisDay from './OnThisDay/OnThisDay';
+//import OnThisDay from './OnThisDay/OnThisDay';
 import './App.css';
 
 class App extends Component {
@@ -45,9 +46,7 @@ class App extends Component {
     let settings = this.settings;
     return (
       <div className="App">
-        <Calendar />
-        <Weather />
-        <OnThisDay />
+        <Weather apikey={config.api.weatherunderground.key} />
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
