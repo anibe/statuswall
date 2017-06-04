@@ -26,6 +26,7 @@ class Weather extends Component {
                 }
             });
             this.saveForecast();
+            console.log('Weather data'+ new Date());
         }
 
         var oReq = new XMLHttpRequest();
@@ -54,11 +55,19 @@ class Weather extends Component {
     }
 
     componentDidMount() {
+        // this.timerID = setInterval(
+        // () => this.refresh(),
+        // 600000
+        // );
         this.refresh();
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }    
+
     refresh() {
-        let weatherCookieStatus = document.cookie.replace(/(?:(?:^|.*;\s*)weatherCookieStatus\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        let weatherCookieStatus = document.cookie.replace(/(?:(?:^|.*;\s*)weatherCookieStatus\s*=\s*([^;]*).*$)|^.*$/, "$1");
         if(weatherCookieStatus !== 'valid=') {
             this.getForecast();
             this.setWeatherCookie(3);
@@ -68,7 +77,17 @@ class Weather extends Component {
     }
 
     mapIcons(apiIconLabel) {
+        // http://unicode.org/emoji/charts/full-emoji-list.html
+        let emojiIconTable = {
+                'partlycloudy': 'U+1F325',
+                'chancerain':'U+1F326',
+                'storm':'U+26C8',
+                'partlysunny':'U+1F324',
+                'sunny':'U+2600',
+                'snow':'U+1F328'
+            };
 
+        return '&#'+ emojiIconTable[apiIconLabel] +';';
     }
 
     render() {
@@ -80,8 +99,8 @@ class Weather extends Component {
             <div className="Weather applet" style={inlineStyles}>
                 <div className="main-title">
                     {this.state.forecast.today[0]}&deg;c
-                    <span>{this.state.forecast.today[1]}</span></div>
-                <div className="sub-title">Hemel Hempstead</div>
+                    <span></span></div>
+                <div className="sub-title">{this.mapIcons(this.state.forecast.today[1])}</div>
             </div>
         );
     }
