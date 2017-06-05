@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Weather.css';
 
 class Weather extends Component {
 
@@ -26,7 +27,7 @@ class Weather extends Component {
                 }
             });
             this.saveForecast();
-            console.log('Weather data'+ new Date());
+            console.log('Weather data '+ new Date());
         }
 
         var oReq = new XMLHttpRequest();
@@ -79,15 +80,15 @@ class Weather extends Component {
     mapIcons(apiIconLabel) {
         // http://unicode.org/emoji/charts/full-emoji-list.html
         let emojiIconTable = {
-                'partlycloudy': 'U+1F325',
-                'chancerain':'U+1F326',
-                'storm':'U+26C8',
-                'partlysunny':'U+1F324',
-                'sunny':'U+2600',
-                'snow':'U+1F328'
+                'partlycloudy': '⛅',//'U+1F325',
+                'chancerain':'🌦',
+                'storm':'⛈',
+                'partlysunny':'🌤',
+                'sunny':'☀',
+                'snow':'🌨'
             };
 
-        return '&#'+ emojiIconTable[apiIconLabel] +';';
+        return emojiIconTable[apiIconLabel];
     }
 
     render() {
@@ -99,8 +100,9 @@ class Weather extends Component {
             <div className="Weather applet" style={inlineStyles}>
                 <div className="main-title">
                     {this.state.forecast.today[0]}&deg;c
-                    <span></span></div>
-                <div className="sub-title">{this.mapIcons(this.state.forecast.today[1])}</div>
+                </div>
+                <div className="no-font icon">{this.mapIcons(this.state.forecast.today[1])}</div>
+                <div className="sub-title">{this.state.forecast.today[1]}</div>
             </div>
         );
     }

@@ -1,0 +1,4 @@
+.Weather .icon {
+    transform: translateY(100px) scale(9);
+    min-height: 50px; 
+}
