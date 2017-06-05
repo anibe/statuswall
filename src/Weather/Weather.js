@@ -85,7 +85,8 @@ class Weather extends Component {
                 'storm':'⛈',
                 'partlysunny':'🌤',
                 'sunny':'☀',
-                'snow':'🌨'
+                'snow':'🌨',
+                'rain':'🌧'
             };
 
         return emojiIconTable[apiIconLabel];
