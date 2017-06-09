@@ -2,3 +2,23 @@
     transform: translateY(100px) scale(8);
     min-height: 50px; 
 }
+
+.Weather .other-days {
+    display: flex;
+    align-content: space-around;
+}
+
+.Weather .other-days > * {
+    flex-grow: 1;
+    color: #fff;
+    font-size: 4.5rem;
+}
+
+.Weather .other-days .heading {
+    opacity: 7;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Weather .other-days .small-icon {
+    transform: translateY(-105px) translateX(120px) scale(4);
+}

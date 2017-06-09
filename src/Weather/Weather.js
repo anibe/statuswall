@@ -15,6 +15,7 @@ class Weather extends Component {
                 nexttomorrow: []
             }
         };
+        this.refreshDurationHours = 1;
     }
 
     getForecast() {
@@ -56,11 +57,10 @@ class Weather extends Component {
     }
 
     componentDidMount() {
-        // this.timerID = setInterval(
-        // () => this.refresh(),
-        // 600000
-        // );
-        this.refresh();
+        //console.log(1000*60*60*this.refreshDurationHours)
+        this.timerID = setInterval(() => this.refresh(),
+            1000*60*2
+        );
     }
 
     componentWillUnmount() {
@@ -68,6 +68,7 @@ class Weather extends Component {
     }    
 
     refresh() {
+        console.log('weather refreshed!');
         let weatherCookieStatus = document.cookie.replace(/(?:(?:^|.*;\s*)weatherCookieStatus\s*=\s*([^;]*).*$)|^.*$/, "$1");
         if(weatherCookieStatus !== 'valid=') {
             this.getForecast();
@@ -86,15 +87,24 @@ class Weather extends Component {
                 'partlysunny':'🌤',
                 'sunny':'☀',
                 'snow':'🌨',
-                'rain':'🌧'
+                'rain':'🌧',
+                'mostlycloudy':'☁☁',
+                'cloudy':'☁'
             };
 
         return emojiIconTable[apiIconLabel];
     }
 
+    twoDaysFromToday() {
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var d = new Date();
+        var dayNum = d.getDay() + 2;
+        return (dayNum > 6) ? days[0] : days[dayNum];
+    }
+
     render() {
         const inlineStyles = {
-            backgroundColor: '#cab08f'
+            backgroundColor: '#8fafca'
         };
 
         return (
@@ -103,7 +113,18 @@ class Weather extends Component {
                     {this.state.forecast.today[0]}&deg;c
                 </div>
                 <div className="no-font icon">{this.mapIcons(this.state.forecast.today[1])}</div>
-                <div className="sub-title">{this.state.forecast.today[1]}</div>
+                <div className="other-days">
+                    <div className="tomorrow">
+                        <div className="heading">Tomorrow</div>
+                        {this.state.forecast.tomorrow[0]}&deg;c
+                        <div className="small-icon">{this.mapIcons(this.state.forecast.tomorrow[1])}</div>
+                    </div>
+                    <div className="nexttomorrow">
+                        <div className="heading">{this.twoDaysFromToday()}</div>
+                        {this.state.forecast.nexttomorrow[0]}&deg;c
+                        <div className="small-icon">{this.mapIcons(this.state.forecast.nexttomorrow[1])}</div>
+                    </div>
+                </div>
             </div>
         );
     }
