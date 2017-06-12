@@ -28,7 +28,7 @@ class Weather extends Component {
                 }
             });
             this.saveForecast();
-            console.log('Weather data '+ new Date());
+            console.log('Weather last updated '+ new Date());
         }
 
         var oReq = new XMLHttpRequest();
@@ -57,7 +57,7 @@ class Weather extends Component {
     }
 
     componentDidMount() {
-        //console.log(1000*60*60*this.refreshDurationHours)
+        this.refresh();
         this.timerID = setInterval(() => this.refresh(),
             1000*60*2
         );
@@ -86,6 +86,7 @@ class Weather extends Component {
                 'storm':'⛈',
                 'partlysunny':'🌤',
                 'sunny':'☀',
+                'clear':'☀',
                 'snow':'🌨',
                 'rain':'🌧',
                 'mostlycloudy':'☁☁',
@@ -99,7 +100,8 @@ class Weather extends Component {
         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         var d = new Date();
         var dayNum = d.getDay() + 2;
-        return (dayNum > 6) ? days[0] : days[dayNum];
+        console.log(dayNum)
+        return (dayNum > 6) ? days[dayNum-7] : days[dayNum];
     }
 
     render() {

@@ -11,7 +11,7 @@
 .Weather .other-days > * {
     flex-grow: 1;
     color: #fff;
-    font-size: 4.5rem;
+    font-size: 5.5rem;
 }
 
 .Weather .other-days .heading {
