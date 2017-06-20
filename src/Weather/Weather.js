@@ -106,7 +106,7 @@ class Weather extends Component {
 
     render() {
         const inlineStyles = {
-            backgroundColor: '#8fafca'
+            backgroundColor: '#577b99'
         };
 
         return (
