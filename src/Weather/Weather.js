@@ -30,8 +30,8 @@ class Weather extends Component {
             this.saveForecast();
             console.log('Weather last updated '+ new Date());
         }
-
-        var oReq = new XMLHttpRequest();
+        
+        var oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill
         oReq.addEventListener("load", reqListener.bind(this));
         oReq.open('GET', this.apiEndpoint + this.location +'.json');
         oReq.send();
