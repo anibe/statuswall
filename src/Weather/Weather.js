@@ -84,6 +84,7 @@ class Weather extends Component {
                 'partlycloudy': '⛅',//'U+1F325',
                 'chancerain':'🌦',
                 'storm':'⛈',
+                'chancetstorms':'⛈',
                 'partlysunny':'🌤',
                 'sunny':'☀',
                 'clear':'☀',
