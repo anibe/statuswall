@@ -393,24 +393,16 @@ class Calendar extends Component {
                 <h3>This week</h3>
                 <ul>
                     <li>
-                        <div className="dates">Monday</div>
+                        <div className="dates">July 10</div>
                         <h4>Summer Series at Somerset House with American Express® -Robert Glasper</h4>
-                    </li>
-                    <li>
-                        <div className="dates">Tuesday</div>
-                        <h4>Church Meeting</h4>
                     </li>                    
                     <li>
-                        <div className="dates">Thursday</div>
-                        <h4>Arsenal v CSKA Moscow ⚽<br/><span>Channel 5</span></h4>
+                        <div className="dates">July 12</div>
+                        <h4>Arsenal v CSKA Moscow <em>⚽</em><br/><span className="location">Channel 5</span></h4>
                     </li>                                        
                     <li>
-                        <div className="dates">Friday</div>
-                        <h4>Unveiling Arts Festival</h4>
-                    </li>
-                    <li>
-                        <div className="dates">Sunday</div>
-                        <h4>Dipo 🎂</h4>
+                        <div className="dates">Aug 5</div>
+                        <h4>Dipo <em>🎂</em></h4>                        
                     </li>                                       
                 </ul>                    
                 {/*<div className="sub-title">No events this week</div>*/}

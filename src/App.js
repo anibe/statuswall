@@ -47,8 +47,8 @@ class App extends Component {
     return (
       <div className="App">
         <Weather apikey={config.api.weatherunderground.key} />
-        <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
         <Calendar />
+        <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
   }
