@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+// import google from 'googleapis';
 import './Calendar.css';
 
 class Calendar extends Component {
@@ -11,11 +12,33 @@ class Calendar extends Component {
         }
     }
 
-    getEvents(date, numberOfEvents) {
+    handleClientLoad() {
+        window.gapi.load('client:auth2', initClient);
+    }
 
-        const gapi = gapi || {};        
+    /**
+     *  Initializes the API client library and sets up sign-in state
+     *  listeners.
+     */
+    initClient() {
+        gapi.client.init({
+            discoveryDocs: DISCOVERY_DOCS,
+            clientId: CLIENT_ID,
+            scope: SCOPES
+        }).then(function () {
+            // Listen for sign-in state changes.
+            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+            // Handle the initial sign-in state.
+            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            authorizeButton.onclick = handleAuthClick;
+            signoutButton.onclick = handleSignoutClick;
+        });
+    }    
+
+    getEvents(date, numberOfEvents) {       
         
-        gapi.client.calendar.events.list({
+        window.gapi.client.calendar.events.list({
           'calendarId': 'primary',
           'timeMin': (new Date()).toISOString(),
           'showDeleted': false,
@@ -51,7 +74,18 @@ class Calendar extends Component {
         this.timerID = setInterval(() => this.getEvents(),
             1000*60*60*4
         );
-    }   
+        this.loadApi();
+    }
+
+    loadApi() {
+        const script = document.createElement("script");
+        script.src = "https://apis.google.com/js/api.js";
+        document.body.appendChild(script);
+
+        script.onload = () => { 
+            window.gapi.load('client:auth2', this.checkAuth.bind(this));
+        }
+    }      
 
     render() {
         const inlineStyles = {
