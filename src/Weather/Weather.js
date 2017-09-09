@@ -85,6 +85,7 @@ class Weather extends Component {
                 'chancerain':'🌦',
                 'storm':'⛈',
                 'chancetstorms':'⛈',
+                'tstorms':'🌩',
                 'partlysunny':'🌤',
                 'sunny':'☀',
                 'clear':'☀',
