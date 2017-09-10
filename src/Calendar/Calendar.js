@@ -24,6 +24,7 @@ class Calendar extends Component {
                 },
                 summary: 'summary'
             }],
+            eventListHTML: '',
             buttons: {
                 authStyle: 'none',
                 soStyle: 'none'
@@ -84,7 +85,7 @@ class Calendar extends Component {
               console.log('Calendar last updated '+ new Date());
             }
             this.setState({
-                events: events                
+                events: events             
             });
           }
         });
@@ -124,17 +125,38 @@ class Calendar extends Component {
             'timeMin': (new Date()).toISOString(),
             'showDeleted': false,
             'singleEvents': true,
-            'maxResults': 10,
+            'maxResults': 5,
             'orderBy': 'startTime'
         }).then(function(response) {
-            var events = response.result.items;
-            console.log('Upcoming events:');
+            let events = response.result.items,
+                eventListHTML = '';
+
+            function formatDate(date) {
+                let calDate = new Date(date);
+                let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+                let rightNow = new Date("2017-09-11");
+                let dateFormatted;
+                let monthNames = [
+                    "Jan", "Feb", "Mar",
+                    "Apr", "May", "Jun", "Jul",
+                    "Aug", "Sept", "Oct",
+                    "Nov", "Dec"
+                  ];
+                let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];                  
+                
+                let diffDays = Math.round(Math.abs((calDate.getTime() - rightNow.getTime())/(oneDay)));
+
+                if (diffDays < 7) {
+                    var dayNum = calDate.getDay();
+                    dateFormatted = days[dayNum];
+                } else {
+                    dateFormatted = monthNames[calDate.getMonth()] +' '+ calDate.getDate();
+                }
+
+                return dateFormatted;
+            }
 
             if (events.length > 0) {
-
-                context.setState({
-                    events: events                
-                });
 
                 for (let i = 0; i < events.length; i++) {
                     var event = events[i];
@@ -142,10 +164,21 @@ class Calendar extends Component {
                     if (!when) {
                         when = event.start.date;
                     }
-                    console.log(event.summary + ' (' + when + ')');                    
+                    // console.log(event.summary + ' (' + when + ')');
+                    eventListHTML += '<li><div className="dates">';
+                    eventListHTML += formatDate(when);
+                    eventListHTML += '</div><h4>'+ event.summary +'</h4></li>';
+                    // console.log(eventListHTML);
                 }
+
+                context.setState({
+                    events,
+                    eventListHTML           
+                });                
             } else {
-                console.log('No upcoming events found.');
+                context.setState({
+                    eventListHTML: '<li><h4>No upcoming events</h4></li>'
+                });
             }
         });
     }
@@ -200,20 +233,8 @@ class Calendar extends Component {
 
         return (            
             <div className="Calendar applet" style={inlineStyles}>
-                <h3>This week</h3>
-                <ul>
-                    <li>
-                        <div className="dates">{this.state.events[0].start.date}</div>
-                        <h4>{this.state.events[0].summary}</h4>
-                    </li>
-                    <li>
-                        <div className="dates">{this.state.events[1].start.date}</div>
-                        <h4>{this.state.events[1].summary}</h4>
-                    </li>
-                    <li>
-                        <div className="dates">{this.state.events[2].start.date}</div>
-                        <h4>{this.state.events[2].summary}</h4>
-                    </li>                                                                             
+                <h3>Upcoming</h3>
+                <ul dangerouslySetInnerHTML={{ __html: this.state.eventListHTML}}>             
                 </ul>
                 <button id="authorize-button" onClick={this.handleAuthClick} style={{display: this.state.buttons.authStyle}}>Authorize</button>
                 <button id="signout-button" onClick={this.handleSignoutClick} style={{display: this.state.buttons.soStyle}}>Sign Out</button>
