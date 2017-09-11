@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 import './Calendar.css';
 
 // Client ID and API key from the Developer Console
-const CLIENT_ID = '1030765228226-o5qp4k2qhn50hm99ssu5kdbg44gk7f26.apps.googleusercontent.com';
+// var CLIENT_ID = '1030765228226-o5qp4k2qhn50hm99ssu5kdbg44gk7f26.apps.googleusercontent.com';
+var CLIENT_ID = '288482386496-vtni4bnou340b2jj49p008nqn66idub2.apps.googleusercontent.com';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -56,39 +57,6 @@ class Calendar extends Component {
             // Handle the initial sign-in state.
             updateSigninStatus(window.gapi.auth2.getAuthInstance().isSignedIn.get(), context);
         });
-    }    
-
-    getEvents(date, numberOfEvents) {       
-        
-        window.gapi.client.calendar.events.list({
-          'calendarId': 'primary',
-          'timeMin': (new Date()).toISOString(),
-          'showDeleted': false,
-          'singleEvents': true,
-          'maxResults': 4,
-          'orderBy': 'startTime'
-        }).then(function(response) {
-          let events = response.result.items;
-
-          if (events.length > 0) {
-            for (let i = 0; i < events.length; i++) {
-              var event = events[i];
-              var when = event.start.dateTime;
-              if (!when) {
-                when = event.start.date;
-              }
-              events.push({
-                  "date": when,
-                  "summary": event.summary,
-                  "location": event.location
-              });
-              console.log('Calendar last updated '+ new Date());
-            }
-            this.setState({
-                events: events             
-            });
-          }
-        });
     }
 
     /**
@@ -125,16 +93,17 @@ class Calendar extends Component {
             'timeMin': (new Date()).toISOString(),
             'showDeleted': false,
             'singleEvents': true,
-            'maxResults': 5,
+            'maxResults': 6,
             'orderBy': 'startTime'
         }).then(function(response) {
+            console.log('calendar updated');
             let events = response.result.items,
                 eventListHTML = '';
 
             function formatDate(date) {
                 let calDate = new Date(date);
                 let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-                let rightNow = new Date("2017-09-11");
+                let rightNow = new Date();
                 let dateFormatted;
                 let monthNames = [
                     "Jan", "Feb", "Mar",
@@ -165,7 +134,7 @@ class Calendar extends Component {
                         when = event.start.date;
                     }
                     // console.log(event.summary + ' (' + when + ')');
-                    eventListHTML += '<li><div className="dates">';
+                    eventListHTML += '<li><div class="dates">';
                     eventListHTML += formatDate(when);
                     eventListHTML += '</div><h4>'+ event.summary +'</h4></li>';
                     // console.log(eventListHTML);
@@ -211,9 +180,9 @@ class Calendar extends Component {
 
     componentDidMount() {
         this.loadApi();
-        // this.timerID = setInterval(() => this.getEvents(),
-        //     1000*60*60*4
-        // );  
+        this.timerID = setInterval(() => this.listUpcomingEvents(this),
+            1000*60*60*6 //refresh calendar every 6 hours
+        );  
     }
 
     loadApi() {
@@ -221,7 +190,7 @@ class Calendar extends Component {
         script.src = "https://apis.google.com/js/api.js";
         document.body.appendChild(script);
 
-        script.onload = () => { 
+        script.onload = () => {
             window.gapi.load('client:auth2', this.handleClientLoad.bind(this));
         }
     }      
@@ -238,9 +207,6 @@ class Calendar extends Component {
                 </ul>
                 <button id="authorize-button" onClick={this.handleAuthClick} style={{display: this.state.buttons.authStyle}}>Authorize</button>
                 <button id="signout-button" onClick={this.handleSignoutClick} style={{display: this.state.buttons.soStyle}}>Sign Out</button>
-
-                <pre id="content"></pre>                  
-                {/*<div className="sub-title">No events this week</div>*/}
             </div>
         );
     }
