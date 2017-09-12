@@ -51,7 +51,6 @@ class Calendar extends Component {
             scope: SCOPES
         }).then(function () {
             // Listen for sign-in state changes.
-            console.log(this);
             window.gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
             // Handle the initial sign-in state.
@@ -125,19 +124,26 @@ class Calendar extends Component {
                 return dateFormatted;
             }
 
+            function formatTime(digit) {
+                return ("0" + digit).slice(-2);
+            }            
+
             if (events.length > 0) {
 
                 for (let i = 0; i < events.length; i++) {
                     var event = events[i];
                     var when = event.start.dateTime;
+                    var time;
                     if (!when) {
                         when = event.start.date;
+                    }  else {
+                        time = formatTime(new Date(when).getHours()) +':'+ formatTime(new Date(when).getMinutes());
                     }
-                    // console.log(event.summary + ' (' + when + ')');
                     eventListHTML += '<li><div class="dates">';
-                    eventListHTML += formatDate(when);
-                    eventListHTML += '</div><h4>'+ event.summary +'</h4></li>';
-                    // console.log(eventListHTML);
+                    eventListHTML += formatDate(when) +'</div><h4>';
+                    eventListHTML += event.summary;
+                    eventListHTML += time ? '<span class="time">'+ time +'</span>' : '';
+                    eventListHTML += '</h4></li>';
                 }
 
                 context.setState({
@@ -176,12 +182,12 @@ class Calendar extends Component {
      */
     handleSignoutClick(event) {
         window.gapi.auth2.getAuthInstance().signOut();
-    }      
+    }    
 
     componentDidMount() {
         this.loadApi();
         this.timerID = setInterval(() => this.listUpcomingEvents(this),
-            1000*60*60*6 //refresh calendar every 6 hours
+            1000*60*60*1 //refresh calendar every 1 hours
         );  
     }
 

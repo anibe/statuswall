@@ -102,7 +102,6 @@ class Weather extends Component {
         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         var d = new Date();
         var dayNum = d.getDay() + 2;
-        console.log(dayNum)
         return (dayNum > 6) ? days[dayNum-7] : days[dayNum];
     }
 
