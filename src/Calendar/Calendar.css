@@ -7,6 +7,8 @@
     margin: 0 0 0.5rem;
     letter-spacing: 0.4rem;
     color: #fff;
+    padding-left: 35px;
+    text-align: left;
     text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);    
 }
 
@@ -40,7 +42,9 @@
     width: 24%;
     flex: 0 1 24%;
     font-size: 3rem;
-    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .Calendar li:nth-child(odd) {

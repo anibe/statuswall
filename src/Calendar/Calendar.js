@@ -92,7 +92,7 @@ class Calendar extends Component {
             'timeMin': (new Date()).toISOString(),
             'showDeleted': false,
             'singleEvents': true,
-            'maxResults': 6,
+            'maxResults': 5,
             'orderBy': 'startTime'
         }).then(function(response) {
             console.log('calendar updated');
@@ -114,7 +114,7 @@ class Calendar extends Component {
                 
                 let diffDays = Math.round(Math.abs((calDate.getTime() - rightNow.getTime())/(oneDay)));
 
-                if (diffDays < 7) {
+                if (diffDays < 8) {
                     var dayNum = calDate.getDay();
                     dateFormatted = days[dayNum];
                 } else {
@@ -133,7 +133,7 @@ class Calendar extends Component {
                 for (let i = 0; i < events.length; i++) {
                     var event = events[i];
                     var when = event.start.dateTime;
-                    var time;
+                    var time = null;
                     if (!when) {
                         when = event.start.date;
                     }  else {

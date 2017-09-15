@@ -47,7 +47,7 @@
 }
 
 .App .applet.active {
-  position: fixed;
+  position: absolute;
   height: 105%; /* To help hide address bar */
   width: 100%;
   display: flex;
