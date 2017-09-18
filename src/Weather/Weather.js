@@ -13,12 +13,15 @@ class Weather extends Component {
                 today: [],
                 tomorrow: [],
                 nexttomorrow: []
-            }
+            },
+            timeOfDay: ''
         };
         this.refreshDurationHours = 1;
     }
 
     getForecast() {
+        let rightNow = new Date(),
+            isNight = rightNow.getHours() >= 18 || rightNow.getHours() < 7;
         function reqListener (e) {
             this.setState({
                 forecast: {
@@ -28,7 +31,10 @@ class Weather extends Component {
                 }
             });
             this.saveForecast();
-            console.log('Weather last updated '+ new Date());
+            this.setState({
+                timeOfDay: isNight ? 'night' : 'day'
+            })
+            console.log('Weather last updated '+ rightNow);
         }
         
         var oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill
@@ -86,9 +92,9 @@ class Weather extends Component {
                 'storm':'⛈',
                 'chancetstorms':'⛈',
                 'tstorms':'🌩',
-                'partlysunny':'🌤',
-                'sunny':'☀',
-                'clear':'☀',
+                'partlysunny': this.state.timeOfDay === 'day' ? '🌤':'🌜',
+                'sunny': this.state.timeOfDay === 'day' ? '☀':'🌕',
+                'clear':this.state.timeOfDay === 'day' ? '☀':'🌕',
                 'snow':'🌨',
                 'rain':'🌧',
                 'mostlycloudy':'☁☁',
@@ -107,7 +113,7 @@ class Weather extends Component {
 
     render() {
         const inlineStyles = {
-            backgroundColor: '#577b99'
+            backgroundColor: this.state.timeOfDay === 'day' ? '#577b99' : '#101b23'
         };
 
         return (
