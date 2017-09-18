@@ -9,7 +9,8 @@
     color: #fff;
     padding-left: 35px;
     text-align: left;
-    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);    
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: 0.75;
 }
 
 .Calendar h4 span {

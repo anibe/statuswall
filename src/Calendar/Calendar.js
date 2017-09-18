@@ -208,7 +208,7 @@ class Calendar extends Component {
 
         return (            
             <div className="Calendar applet" style={inlineStyles}>
-                <h3>Upcoming</h3>
+                <h3>Events</h3>
                 <ul dangerouslySetInnerHTML={{ __html: this.state.eventListHTML}}>             
                 </ul>
                 <button id="authorize-button" onClick={this.handleAuthClick} style={{display: this.state.buttons.authStyle}}>Authorize</button>
