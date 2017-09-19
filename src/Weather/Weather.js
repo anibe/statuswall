@@ -28,12 +28,10 @@ class Weather extends Component {
                     today: [JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[0].high.celsius, JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[0].icon],
                     tomorrow: [JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[1].high.celsius, JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[1].icon],
                     nexttomorrow: [JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[2].high.celsius, JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[2].icon]    
-                }
+                },
+                timeOfDay: isNight ? 'night' : 'day'
             });
             this.saveForecast();
-            this.setState({
-                timeOfDay: isNight ? 'night' : 'day'
-            })
             console.log('Weather last updated '+ rightNow);
         }
         
