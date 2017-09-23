@@ -14,7 +14,7 @@ class Weather extends Component {
                 tomorrow: [],
                 nexttomorrow: []
             },
-            timeOfDay: ''
+            timeOfDay: 'day'
         };
         this.refreshDurationHours = 1;
     }
@@ -96,7 +96,8 @@ class Weather extends Component {
                 'snow':'🌨',
                 'rain':'🌧',
                 'mostlycloudy':'☁☁',
-                'cloudy':'☁'
+                'cloudy':'☁',
+                'fog':'🌫'
             };
 
         return emojiIconTable[apiIconLabel];
@@ -117,18 +118,18 @@ class Weather extends Component {
         return (
             <div className="Weather applet" style={inlineStyles}>
                 <div className="main-title">
-                    {this.state.forecast.today[0]}&deg;c
+                    {this.state.forecast.today[0]}&deg;
                 </div>
                 <div className="no-font icon">{this.mapIcons(this.state.forecast.today[1])}</div>
                 <div className="other-days">
                     <div className="tomorrow">
                         <div className="heading">Tomorrow</div>
-                        {this.state.forecast.tomorrow[0]}&deg;c
+                        {this.state.forecast.tomorrow[0]}&deg;
                         <div className="small-icon">{this.mapIcons(this.state.forecast.tomorrow[1])}</div>
                     </div>
                     <div className="nexttomorrow">
                         <div className="heading">{this.twoDaysFromToday()}</div>
-                        {this.state.forecast.nexttomorrow[0]}&deg;c
+                        {this.state.forecast.nexttomorrow[0]}&deg;
                         <div className="small-icon">{this.mapIcons(this.state.forecast.nexttomorrow[1])}</div>
                     </div>
                 </div>
