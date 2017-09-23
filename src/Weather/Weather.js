@@ -21,7 +21,7 @@ class Weather extends Component {
 
     getForecast() {
         let rightNow = new Date(),
-            isNight = rightNow.getHours() >= 18 || rightNow.getHours() < 7;
+            isNight = !(rightNow.getHours() >= 7 && rightNow.getHours() < 18);
         function reqListener (e) {
             this.setState({
                 forecast: {
