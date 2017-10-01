@@ -43,7 +43,7 @@
 }
 
 .App .active {
-  animation: 'animate-reveal' 0.3s;
+  animation: 'animate-reveal' 0.2s;
 }
 
 .App .applet.active {

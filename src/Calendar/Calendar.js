@@ -114,7 +114,7 @@ class Calendar extends Component {
                 
                 let diffDays = Math.round(Math.abs((calDate.getTime() - rightNow.getTime())/(oneDay)));
 
-                if (diffDays < 8) {
+                if (diffDays < 7) {
                     var dayNum = calDate.getDay();
                     dateFormatted = days[dayNum];
                 } else {
