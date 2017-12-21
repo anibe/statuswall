@@ -11,8 +11,7 @@ class Greeting extends Component {
   render() {
 
     return (
-      <div className="Greeting applet active float" dangerouslySetInnerHTML={{ __html: this.messageHTML}}>
-      </div>
+      <div className="Greeting applet" dangerouslySetInnerHTML={{ __html: this.messageHTML}}/>
     );
   }
 }

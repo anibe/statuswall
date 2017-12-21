@@ -1,0 +1,7 @@
+{
+    "apps": {
+        "greeting": {
+            "messageHTML": "<h1 class='main-title'>Merry Christmas</h1>"
+        }
+    }
+}

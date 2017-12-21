@@ -1,0 +1,10 @@
+.Greeting {
+    background-color: tan;
+    background-image: url('images/christmas-background.webp');
+    background-size: cover;
+}
+
+.App .applet.active.Greeting .main-title {
+    font-size: 17vw;
+    letter-spacing: 4px;
+}
