@@ -15,7 +15,23 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
+*Important*: The app will not run without a valid `config.json`. This file contains settings such as private API keys and content, hence non-inclusion in the public repo. A sample of the file below:
+
+```
+{
+    "api": {
+        "weatherunderground": {
+            "key": "<your weather underground key>"
+        },
+        "googlecalendar": {
+            "clientid":"<your google api client id>",
+            "clientsecret": "<your google api client secret>"
+        }
+    }
+}
+```
+
+After successful setup, the app will automatically reload in the browser if you make edits.<br>
 You will also see any lint errors in the console.
 
 #### `npm test`
