@@ -1,7 +1,7 @@
 {
     "apps": {
         "greeting": {
-            "messageHTML": "<h1 class='main-title'>Happy 2018</h1>"
+            "messageHTML": "<h1 class='main-title'>Happy<br/> 2018</h1>"
         }
     }
 }
