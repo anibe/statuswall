@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import config from './config.json';
-import content from './content.json';
 import Clock from './Clock/Clock';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
-import Greeting from './Greeting/Greeting';
+import Coin from './Coin/Coin';
 import './App.css';
 
 class App extends Component {
@@ -47,10 +46,10 @@ class App extends Component {
     let settings = this.settings;
     return (
       <div className="App">
-        <Weather apikey={config.api.weatherunderground.key} />
-        <Calendar />
-        <Greeting content={ content.apps.greeting } />
-        <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
+        {/* <Weather apikey={config.api.weatherunderground.key} />
+        <Calendar /> */}
+        <Coin apikey={config.api.alphavantage.key} />
+        {/* <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} /> */}
       </div>
     );
   }
