@@ -71,10 +71,22 @@ class Coin extends Component {
         coinPrice = parseFloat(data.ticker.price),
         coinChange = parseFloat(data.ticker.change),
         lastUpdated = new Date(Date.now());
+    
+    function formatSign(number) {
+        let sign = '';
+        if (parseFloat(number) >= 0) {
+            sign = '+';
+        }
+       return sign + number; 
+    }
+
+    function formatMoney(number) {
+        return number.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+    }
 
     stateCoinData[symbol] = {
-        'currentPrice': coinPrice.toFixed(2),
-        'change': ((((coinPrice + coinChange) - coinPrice) / coinPrice) * 100).toFixed(3),
+        'currentPrice': formatMoney(coinPrice.toFixed(2)),
+        'change': formatSign(((((coinPrice + coinChange) - coinPrice) / coinPrice) * 100).toFixed(3)),
         'direction': coinChange > 0 ? 'gain': 'loss',
         'action': ''
     };
@@ -100,7 +112,7 @@ class Coin extends Component {
 
     return (
       <div className="Coin applet" style={inlineStyles}>
-      <h3>Crytoprice</h3>
+      <h3>Money</h3>
         <ul>
             <li><div className="symbol">BTC</div> <h4 className="prices">£{this.state.coinData['BTC'].currentPrice} <span className={this.state.coinData['BTC'].direction}>{this.state.coinData['BTC'].change}%</span></h4></li>
             <li><div className="symbol">ETH</div> <h4 className="prices">£{this.state.coinData['ETH'].currentPrice} <span className={this.state.coinData['ETH'].direction}>{this.state.coinData['ETH'].change}%</span></h4></li>
