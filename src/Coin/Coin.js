@@ -56,7 +56,7 @@ class Coin extends Component {
       settings.coins.forEach(function(coin) {
         var oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill
         oReq.addEventListener("load", reqListener.bind(this, coin.symbol));
-        oReq.open('GET', '//api.cryptonator.com/api/full/'+ coin.symbol +'-'+ settings.currency);
+        oReq.open('GET', 'https://api.cryptonator.com/api/full/'+ coin.symbol +'-'+ settings.currency);
         oReq.send();        
       });
 
