@@ -46,10 +46,10 @@ class App extends Component {
     let settings = this.settings;
     return (
       <div className="App">
-        {/* <Weather apikey={config.api.weatherunderground.key} />
-        <Calendar /> */}
+        <Weather apikey={config.api.weatherunderground.key} />
+        <Calendar />
         <Coin apikey={config.api.alphavantage.key} />
-        {/* <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} /> */}
+        <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
   }

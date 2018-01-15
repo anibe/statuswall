@@ -26,14 +26,27 @@ class Coin extends Component {
     };
     this.state = {
         coinData: {
+            'lastUpdated': Date.now(),
             'BTC': {
                 'currentPrice':'',
-                'daychange': '',
+                'change': '',
+                'direction':'',
+                'action':''
+            },
+            'ETH': {
+                'currentPrice':'',
+                'change': '',
+                'direction':'',
+                'action':''
+            },
+            'XRP': {
+                'currentPrice':'',
+                'change': '',
+                'direction':'',
                 'action':''
             }
         }
     };
-    this.updateCoinData = this.updateCoinData.bind(this);
   }
 
   refresh() {
@@ -43,45 +56,37 @@ class Coin extends Component {
       settings.coins.forEach(function(coin) {
         var oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill
         oReq.addEventListener("load", reqListener.bind(this, coin.symbol));
-        oReq.open('GET', '//www.alphavantage.co/query?function=DIGITAL_CURRENCY_INTRADAY&symbol='+ coin.symbol +'&market='+ settings.currency +'&apikey='+ settings.apikey);
+        oReq.open('GET', '//api.cryptonator.com/api/full/'+ coin.symbol +'-'+ settings.currency);
         oReq.send();        
       });
 
       function reqListener(symbol, event) {
           const data = JSON.parse(event.target.response);
           app.updateCoinData(symbol, data);
-      }
-      
-    //   function reqListener (symbol, e) {
-    //     const data = JSON.parse(e.target.response);
-    //     console.log(data);
-    //     let stateCoinData = Object.assign({}, this.state.coinData);
-    //     stateCoinData[symbol] = {
-    //         'currentPrice':'',
-    //         'daychange': '',
-    //         'action':''
-    //     };
-    //     this.setState({ coinData: stateCoinData });
-    //   }      
+      }     
   }
 
   updateCoinData(symbol, data) {
-    console.log(data);
-    let stateCoinData = Object.assign({}, this.state.coinData);
+    let stateCoinData = Object.assign({}, this.state.coinData),
+        coinPrice = parseFloat(data.ticker.price),
+        coinChange = parseFloat(data.ticker.change),
+        lastUpdated = new Date(Date.now());
+
     stateCoinData[symbol] = {
-        'currentPrice': data["Time Series (Digital Currency Intraday)"][0]["1a. price (GBP)"],
-        'daychange': '',
-        'action':''
+        'currentPrice': coinPrice.toFixed(2),
+        'change': ((((coinPrice + coinChange) - coinPrice) / coinPrice) * 100).toFixed(3),
+        'direction': coinChange > 0 ? 'gain': 'loss',
+        'action': ''
     };
+    stateCoinData.lastUpdated = lastUpdated.toGMTString();
     this.setState({ coinData: stateCoinData });
   }
 
   componentDidMount() {
     this.refresh();
-    // this.timerID = setInterval(() => this.refresh(),
-    //     1000*10 // 20mins
-    //     //1000*60*20 // 20mins
-    // );
+    this.timerID = setInterval(() => this.refresh(),
+        1000*60*60
+    );    
   }
 
    componentWillUnmount() {
@@ -95,14 +100,15 @@ class Coin extends Component {
 
     return (
       <div className="Coin applet" style={inlineStyles}>
-      <h3>Coins</h3>
+      <h3>Crytoprice</h3>
         <ul>
-            <li><div className="symbol">BTC</div> <h4 className="prices">£11,817 <span className="gain">+3%</span></h4></li>
-            <li><div className="symbol">ETH</div> <h4 className="prices">£817 <span className="gain">+5.39%</span></h4></li>
-            <li className="buy"><div className="symbol">XRP</div> <h4 className="prices">£6,817 <span className="loss">-30%</span> BUY</h4></li>
-            <li className="sell"><div className="symbol">XRP</div> <h4 className="prices">£6,817 <span className="loss">-30%</span> SELL</h4></li>
+            <li><div className="symbol">BTC</div> <h4 className="prices">£{this.state.coinData['BTC'].currentPrice} <span className={this.state.coinData['BTC'].direction}>{this.state.coinData['BTC'].change}%</span></h4></li>
+            <li><div className="symbol">ETH</div> <h4 className="prices">£{this.state.coinData['ETH'].currentPrice} <span className={this.state.coinData['ETH'].direction}>{this.state.coinData['ETH'].change}%</span></h4></li>
+            <li><div className="symbol">XRP</div> <h4 className="prices">£{this.state.coinData['XRP'].currentPrice} <span className={this.state.coinData['XRP'].direction}>{this.state.coinData['XRP'].change}%</span></h4></li>
+            {/* <li className="buy"><div className="symbol">XRP</div> <h4 className="prices">£6,817 <span className="loss">-30%</span> BUY</h4></li>
+            <li className="sell"><div className="symbol">XRP</div> <h4 className="prices">£6,817 <span className="loss">-30%</span> SELL</h4></li> */}
         </ul>
-        <div className="last-update">Prices as at Saturday 16:59</div>
+        <div className="last-update">Prices as at {this.state.coinData['lastUpdated']}</div>
       </div>
     );
   }
