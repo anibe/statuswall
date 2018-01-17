@@ -8,21 +8,7 @@ class Coin extends Component {
     this.settings = {
         currency: 'GBP',
         apikey: props.apikey,
-        coins: [{
-            'symbol': 'BTC',
-            'buy': 8000,
-            'sell': 24000
-        },
-        {
-            'symbol': 'ETH',
-            'buy': 800,
-            'sell': 1800    
-        },
-        {
-            'symbol': 'XRP',
-            'buy': 1,
-            'sell': 3    
-        }]
+        coins: props.money
     };
     this.state = {
         coinData: {
