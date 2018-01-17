@@ -80,6 +80,10 @@
     background-color: rgba(255, 190, 70, 0.4);
 }
 
+.Coin .action {
+    text-transform: uppercase;
+}
+
 .Coin .gain {
     color: #6fce75;
 }

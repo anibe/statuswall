@@ -10,18 +10,18 @@ class Coin extends Component {
         apikey: props.apikey,
         coins: [{
             'symbol': 'BTC',
-            'buy': 9000,
+            'buy': 8000,
             'sell': 24000
         },
         {
             'symbol': 'ETH',
             'buy': 800,
-            'sell': 24000    
+            'sell': 1800    
         },
         {
             'symbol': 'XRP',
-            'buy': 9000,
-            'sell': 24000    
+            'buy': 1,
+            'sell': 3    
         }]
     };
     this.state = {
@@ -87,11 +87,34 @@ class Coin extends Component {
     stateCoinData[symbol] = {
         'currentPrice': formatMoney(coinPrice.toFixed(2)),
         'change': formatSign(((((coinPrice + coinChange) - coinPrice) / coinPrice) * 100).toFixed(3)),
-        'direction': coinChange > 0 ? 'gain': 'loss',
-        'action': ''
+        'direction': coinChange >= 0 ? 'gain': 'loss',
+        'action': this.computeAction(symbol, coinPrice)
     };
     stateCoinData.lastUpdated = lastUpdated.toGMTString();
     this.setState({ coinData: stateCoinData });
+  }
+
+  computeAction(symbol, price) {
+
+    var coinActionSettings = this.settings.coins.find(containsSymbol),
+        action;
+
+    function containsSymbol(coin) {
+        return coin.symbol === symbol;
+    }
+
+    switch (true) {
+        case price <= coinActionSettings.buy:
+            action = 'buy';
+            break;
+        case price >= coinActionSettings.sell:
+            action = 'sell';
+            break;
+        default:
+            action = '';
+    }
+
+    return action;
   }
 
   componentDidMount() {
@@ -114,11 +137,9 @@ class Coin extends Component {
       <div className="Coin applet" style={inlineStyles}>
       <h3>Money</h3>
         <ul>
-            <li><div className="symbol">BTC</div> <h4 className="prices">£{this.state.coinData['BTC'].currentPrice} <span className={this.state.coinData['BTC'].direction}>{this.state.coinData['BTC'].change}%</span></h4></li>
-            <li><div className="symbol">ETH</div> <h4 className="prices">£{this.state.coinData['ETH'].currentPrice} <span className={this.state.coinData['ETH'].direction}>{this.state.coinData['ETH'].change}%</span></h4></li>
-            <li><div className="symbol">XRP</div> <h4 className="prices">£{this.state.coinData['XRP'].currentPrice} <span className={this.state.coinData['XRP'].direction}>{this.state.coinData['XRP'].change}%</span></h4></li>
-            {/* <li className="buy"><div className="symbol">XRP</div> <h4 className="prices">£6,817 <span className="loss">-30%</span> BUY</h4></li>
-            <li className="sell"><div className="symbol">XRP</div> <h4 className="prices">£6,817 <span className="loss">-30%</span> SELL</h4></li> */}
+            <li className={this.state.coinData['BTC'].action}><div className="symbol">BTC</div> <h4 className="prices">£{this.state.coinData['BTC'].currentPrice} <span className={this.state.coinData['BTC'].direction}>{this.state.coinData['BTC'].change}%</span> <span className="action">{this.state.coinData['BTC'].action}</span></h4></li>
+            <li className={this.state.coinData['ETH'].action}><div className="symbol">ETH</div> <h4 className="prices">£{this.state.coinData['ETH'].currentPrice} <span className={this.state.coinData['ETH'].direction}>{this.state.coinData['ETH'].change}%</span> <span className="action">{this.state.coinData['ETH'].action}</span></h4></li>
+            <li className={this.state.coinData['XRP'].action}><div className="symbol">XRP</div> <h4 className="prices">£{this.state.coinData['XRP'].currentPrice} <span className={this.state.coinData['XRP'].direction}>{this.state.coinData['XRP'].change}%</span> <span className="action">{this.state.coinData['XRP'].action}</span></h4></li>
         </ul>
         <div className="last-update">Prices as at {this.state.coinData['lastUpdated']}</div>
       </div>
