@@ -48,7 +48,7 @@ class App extends Component {
       <div className="App">
         <Weather apikey={config.api.weatherunderground.key} />
         <Calendar />
-        <Coin apikey={config.api.alphavantage.key} money={config.content.money.coins} />
+        <Coin apikey={config.api.alphavantage.key} />
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
