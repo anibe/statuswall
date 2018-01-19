@@ -106,7 +106,7 @@ class Coin extends Component {
   componentDidMount() {
     this.refresh();
     this.timerID = setInterval(() => this.refresh(),
-        1000*60*60
+        1000*60*10
     );    
   }
 

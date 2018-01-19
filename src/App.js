@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import config from './config.json';
-import Clock from './Clock/Clock';
-import Calendar from './Calendar/Calendar';
-import Weather from './Weather/Weather';
 import Coin from './Coin/Coin';
 import './App.css';
 
@@ -43,13 +40,9 @@ class App extends Component {
   }
 
   render() {
-    let settings = this.settings;
     return (
       <div className="App">
-        <Weather apikey={config.api.weatherunderground.key} />
-        <Calendar />
         <Coin apikey={config.api.alphavantage.key} money={config.content.money.coins} />
-        <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
   }
