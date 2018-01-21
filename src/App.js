@@ -11,7 +11,7 @@ class App extends Component {
   constructor(props) {
     super();
     this.settings = {
-      'interval': 6,
+      'interval': 8,
       'Clock': {
         'is24HourFormat': true,
         'colour':'#CA8FCA'
