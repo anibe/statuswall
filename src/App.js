@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Coin apikey={config.api.alphavantage.key} money={config.content.money.coins} />
+        <Coin apikey={config.api.alphavantage.key} />
       </div>
     );
   }
