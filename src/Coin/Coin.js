@@ -80,6 +80,7 @@ class Coin extends Component {
             }                           
         }
     };
+    this.intervalMins = 3;
   }
 
   refresh() {
@@ -153,7 +154,7 @@ class Coin extends Component {
   componentDidMount() {
     this.refresh();
     this.timerID = setInterval(() => this.refresh(),
-        1000*60*10
+        1000*60*this.intervalMins
     );    
   }
 
