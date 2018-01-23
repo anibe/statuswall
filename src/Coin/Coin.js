@@ -10,7 +10,7 @@ class Coin extends Component {
         apikey: props.apikey,
         coins: [{
             "symbol": "BTC",
-            "buy": 8000,
+            "buy": 7700,
             "sell": 24000
         },
         {
