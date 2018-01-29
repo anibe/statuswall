@@ -9,34 +9,52 @@ class Coin extends Component {
         currency: 'GBP',
         apikey: props.apikey,
         coins: [{
+            "id": "bitcoin",
             "symbol": "BTC",
-            "buy": 7700,
+            "buy": 7800,
             "sell": 24000
         },
         {
+            "id":"ethereum",
             "symbol": "ETH",
-            "buy": 700,
-            "sell": 1800    
+            "buy": 780,
+            "sell": 1900    
         },
         {
+            "id": "ripple",
             "symbol": "XRP",
             "buy": 0.9,
             "sell": 4    
         },        
         {
+            "id": "neo",
             "symbol": "NEO",
             "buy": 90,
             "sell": 300    
         },
         {
+            "id": "vechain",
             "symbol": "VEN",
-            "buy": 3,
-            "sell": 15    
+            "buy": 4.9,
+            "sell": 17    
         },                
         {
-            "symbol": "STORM",
-            "buy": 0.03,
-            "sell": 0.12  
+            "id": "omisego",
+            "symbol": "OMG",
+            "buy": 10.5,
+            "sell": 40
+        },
+        {
+            "id": "stratis",
+            "symbol": "STRAT",
+            "buy": 8,
+            "sell": 32  
+        },        
+        {
+            "id": "stellar",
+            "symbol": "XLM",
+            "buy": 0.25,
+            "sell": 1  
         }]
     };
     this.state = {
@@ -72,14 +90,27 @@ class Coin extends Component {
                 'direction':'',
                 'action':''
             },
-            'STORM': {
+            'OMG': {
                 'currentPrice':'',
                 'change': '',
                 'direction':'',
                 'action':''
-            }                           
+            },
+            'STRAT': {
+                'currentPrice':'',
+                'change': '',
+                'direction':'',
+                'action':''
+            },            
+            'XLM': {
+                'currentPrice':'',
+                'change': '',
+                'direction':'',
+                'action':''
+            }                          
         }
     };
+    this.intervalMins = 7;
   }
 
   refresh() {
@@ -89,7 +120,7 @@ class Coin extends Component {
       settings.coins.forEach(function(coin) {
         var oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill
         oReq.addEventListener("load", reqListener.bind(this, coin.symbol));
-        oReq.open('GET', 'https://api.cryptonator.com/api/full/'+ coin.symbol +'-'+ settings.currency);
+        oReq.open('GET', 'https://api.coinmarketcap.com/v1/ticker/'+ coin.id  +'/?convert='+ settings.currency);
         oReq.send();        
       });
 
@@ -101,8 +132,8 @@ class Coin extends Component {
 
   updateCoinData(symbol, data) {
     let stateCoinData = Object.assign({}, this.state.coinData),
-        coinPrice = parseFloat(data.ticker.price),
-        coinChange = parseFloat(data.ticker.change),
+        coinPrice = parseFloat(data[0].price_gbp),
+        coinChange = parseFloat(data[0].percent_change_24h),
         lastUpdated = new Date(Date.now());
     
     function formatSign(number) {
@@ -119,7 +150,7 @@ class Coin extends Component {
 
     stateCoinData[symbol] = {
         'currentPrice': formatMoney(coinPrice.toFixed(2)),
-        'change': formatSign(((((coinPrice + coinChange) - coinPrice) / coinPrice) * 100).toFixed(3)),
+        'change': formatSign((coinChange).toFixed(3)),
         'direction': coinChange >= 0 ? 'gain': 'loss',
         'action': this.computeAction(symbol, coinPrice)
     };
@@ -153,7 +184,7 @@ class Coin extends Component {
   componentDidMount() {
     this.refresh();
     this.timerID = setInterval(() => this.refresh(),
-        1000*60*60
+        1000*60*this.intervalMins
     );    
   }
 
@@ -177,7 +208,7 @@ class Coin extends Component {
             <li className={this.state.coinData['VEN'].action}><div className="symbol">VeCh</div> <h4 className="prices">£{this.state.coinData['VEN'].currentPrice} <span className={this.state.coinData['VEN'].direction}>{this.state.coinData['VEN'].change}%</span> <span className="action">{this.state.coinData['VEN'].action}</span></h4></li>
             {/* <li className={this.state.coinData['STORM'].action}><div className="symbol">STORM</div> <h4 className="prices">£{this.state.coinData['STORM'].currentPrice} <span className={this.state.coinData['STORM'].direction}>{this.state.coinData['STORM'].change}%</span> <span className="action">{this.state.coinData['STORM'].action}</span></h4></li> */}
         </ul>
-        <div className="last-update">Prices as at {this.state.coinData['lastUpdated']}</div>
+        <div className="last-update">Prices as at {this.state.coinData['lastUpdated']}. Source: coinmarketcap.com</div>
       </div>
     );
   }
