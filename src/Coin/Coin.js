@@ -132,7 +132,7 @@ class Coin extends Component {
 
   updateCoinData(symbol, data) {
     let stateCoinData = Object.assign({}, this.state.coinData),
-        coinPrice = parseFloat(data[0].price_gbp),
+        coinPrice = parseFloat(data[0]['price_'+ this.settings.currency.toLocaleLowerCase()]),
         coinChange = parseFloat(data[0].percent_change_24h),
         lastUpdated = new Date(Date.now());
     
