@@ -11,14 +11,14 @@ class Coin extends Component {
         coins: [{
             "id": "bitcoin",
             "symbol": "BTC",
-            "buy": 7700,
+            "buy": 7800,
             "sell": 24000
         },
         {
             "id":"ethereum",
             "symbol": "ETH",
-            "buy": 700,
-            "sell": 1800    
+            "buy": 780,
+            "sell": 1900    
         },
         {
             "id": "ripple",
