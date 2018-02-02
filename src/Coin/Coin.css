@@ -4,7 +4,7 @@
 
 .Coin {
     color: #f7f6de;
-    font-size: 7vw;
+    font-size: 6vw;
 }
 
 .Coin h3 {
@@ -93,7 +93,7 @@
 }
 
 .Coin .last-update {
-    font-size: 3vw;
+    font-size: 4vw;
     font-family: Arial, Helvetica, sans-serif;
     opacity: 0.4;
 }
