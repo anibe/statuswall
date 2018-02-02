@@ -14,7 +14,7 @@ class App extends Component {
       'interval': 10,
       'Clock': {
         'is24HourFormat': true,
-        'colour':'#CA8FCA'
+        'colour':'#baca8f'
       }
     }
   }

@@ -202,7 +202,7 @@ class Calendar extends Component {
 
     render() {
         const inlineStyles = {
-            backgroundColor: '#8fcaa9'
+            backgroundColor: '#ca8fad'
         };
 
         return (            
