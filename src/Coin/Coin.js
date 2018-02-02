@@ -29,13 +29,13 @@ class Coin extends Component {
         {
             "id": "neo",
             "symbol": "NEO",
-            "buy": 90,
+            "buy": 100,
             "sell": 300    
         },
         {
             "id": "vechain",
             "symbol": "VEN",
-            "buy": 4.9,
+            "buy": 4.6,
             "sell": 17    
         },                
         {
@@ -53,8 +53,20 @@ class Coin extends Component {
         {
             "id": "stellar",
             "symbol": "XLM",
-            "buy": 0.25,
-            "sell": 1  
+            "buy": 0.4,
+            "sell": 1.2  
+        },
+        {
+            "id": "qash",
+            "symbol": "QASH",
+            "buy": 0.8,
+            "sell": 2.4  
+        },
+        {
+            "id": "ignis",
+            "symbol": "IGNIS",
+            "buy": 0.4,
+            "sell": 1.6            
         }]
     };
     this.state = {
@@ -107,7 +119,19 @@ class Coin extends Component {
                 'change': '',
                 'direction':'',
                 'action':''
-            }                          
+            },
+            'QASH': {
+                'currentPrice':'',
+                'change': '',
+                'direction':'',
+                'action':''
+            },
+            'IGNIS': {
+                'currentPrice':'',
+                'change': '',
+                'direction':'',
+                'action':''
+            }                                                 
         }
     };
     this.intervalMins = 3;
@@ -133,7 +157,7 @@ class Coin extends Component {
   updateCoinData(symbol, data) {
     let stateCoinData = Object.assign({}, this.state.coinData),
         coinPrice = parseFloat(data[0]['price_'+ this.settings.currency.toLocaleLowerCase()]),
-        coinChange = parseFloat(data[0].percent_change_24h),
+        coinChange = parseFloat(data[0].percent_change_1h),
         lastUpdated = new Date(Date.now());
     
     function formatSign(number) {
@@ -200,18 +224,18 @@ class Coin extends Component {
 
     return (
       <div className="Coin applet" style={inlineStyles}>
-      <h3>Money</h3>
+      <h3>Trade</h3>
         <ul>
             <li className={this.state.coinData['BTC'].action}><div className="symbol">BTC</div> <h4 className="prices">£{this.state.coinData['BTC'].currentPrice} <span className={this.state.coinData['BTC'].direction}>{this.state.coinData['BTC'].change}%</span> <span className="action">{this.state.coinData['BTC'].action}</span></h4></li>
             <li className={this.state.coinData['ETH'].action}><div className="symbol">ETH</div> <h4 className="prices">£{this.state.coinData['ETH'].currentPrice} <span className={this.state.coinData['ETH'].direction}>{this.state.coinData['ETH'].change}%</span> <span className="action">{this.state.coinData['ETH'].action}</span></h4></li>
             <li className={this.state.coinData['XRP'].action}><div className="symbol">XRP</div> <h4 className="prices">£{this.state.coinData['XRP'].currentPrice} <span className={this.state.coinData['XRP'].direction}>{this.state.coinData['XRP'].change}%</span> <span className="action">{this.state.coinData['XRP'].action}</span></h4></li>
             <li className={this.state.coinData['NEO'].action}><div className="symbol">NEO</div> <h4 className="prices">£{this.state.coinData['NEO'].currentPrice} <span className={this.state.coinData['NEO'].direction}>{this.state.coinData['NEO'].change}%</span> <span className="action">{this.state.coinData['NEO'].action}</span></h4></li>
             <li className={this.state.coinData['VEN'].action}><div className="symbol">VeCh</div> <h4 className="prices">£{this.state.coinData['VEN'].currentPrice} <span className={this.state.coinData['VEN'].direction}>{this.state.coinData['VEN'].change}%</span> <span className="action">{this.state.coinData['VEN'].action}</span></h4></li>
-            {/* <li className={this.state.coinData['BNB'].action}><div className="symbol">BNB</div> <h4 className="prices">£{this.state.coinData['BNB'].currentPrice} <span className={this.state.coinData['BNB'].direction}>{this.state.coinData['BNB'].change}%</span> <span className="action">{this.state.coinData['BNB'].action}</span></h4></li> */}
-            <li className={this.state.coinData['XLM'].action}><div className="symbol">XLM</div> <h4 className="prices">£{this.state.coinData['XLM'].currentPrice} <span className={this.state.coinData['XLM'].direction}>{this.state.coinData['XLM'].change}%</span> <span className="action">{this.state.coinData['XLM'].action}</span></h4></li>
             <li className={this.state.coinData['OMG'].action}><div className="symbol">OMG</div> <h4 className="prices">£{this.state.coinData['OMG'].currentPrice} <span className={this.state.coinData['OMG'].direction}>{this.state.coinData['OMG'].change}%</span> <span className="action">{this.state.coinData['OMG'].action}</span></h4></li>
             <li className={this.state.coinData['STRAT'].action}><div className="symbol">STRAT</div> <h4 className="prices">£{this.state.coinData['STRAT'].currentPrice} <span className={this.state.coinData['STRAT'].direction}>{this.state.coinData['STRAT'].change}%</span> <span className="action">{this.state.coinData['STRAT'].action}</span></h4></li>
-            {/* <li className={this.state.coinData['STORM'].action}><div className="symbol">STORM</div> <h4 className="prices">£{this.state.coinData['STORM'].currentPrice} <span className={this.state.coinData['STORM'].direction}>{this.state.coinData['STORM'].change}%</span> <span className="action">{this.state.coinData['STORM'].action}</span></h4></li> */}
+            <li className={this.state.coinData['XLM'].action}><div className="symbol">XLM</div> <h4 className="prices">£{this.state.coinData['XLM'].currentPrice} <span className={this.state.coinData['XLM'].direction}>{this.state.coinData['XLM'].change}%</span> <span className="action">{this.state.coinData['XLM'].action}</span></h4></li>
+            <li className={this.state.coinData['QASH'].action}><div className="symbol">QASH</div> <h4 className="prices">£{this.state.coinData['QASH'].currentPrice} <span className={this.state.coinData['QASH'].direction}>{this.state.coinData['QASH'].change}%</span> <span className="action">{this.state.coinData['QASH'].action}</span></h4></li>
+            <li className={this.state.coinData['IGNIS'].action}><div className="symbol">IGNIS</div> <h4 className="prices">£{this.state.coinData['IGNIS'].currentPrice} <span className={this.state.coinData['IGNIS'].direction}>{this.state.coinData['IGNIS'].change}%</span> <span className="action">{this.state.coinData['IGNIS'].action}</span></h4></li>
         </ul>
         <div className="last-update">Prices as at {this.state.coinData['lastUpdated']}. Source: coinmarketcap.com</div>
       </div>
