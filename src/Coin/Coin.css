@@ -80,6 +80,10 @@
     background-color: rgba(255, 190, 70, 0.4);
 }
 
+.Coin li.exch {
+    background-color: rgba(187, 70, 255, 0.4);
+}
+
 .Coin .action {
     text-transform: uppercase;
 }

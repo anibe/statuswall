@@ -25,7 +25,13 @@ class Coin extends Component {
             "symbol": "XRP",
             "buy": 0.9,
             "sell": 4    
-        },        
+        },
+        {
+            "id": "binance-coin",
+            "symbol": "BNB",
+            "buy": 5,
+            "sell": 15    
+        },                
         {
             "id": "neo",
             "symbol": "NEO",
@@ -89,6 +95,12 @@ class Coin extends Component {
                 'direction':'',
                 'action':''
             },
+            'BNB': {
+                'currentPrice':'',
+                'change': '',
+                'direction':'',
+                'action':''
+            },            
             'NEO': {
                 'currentPrice':'',
                 'change': '',
@@ -202,12 +214,15 @@ class Coin extends Component {
     }
 
     switch (true) {
+        case price >= ((coinActionSettings.buy * 0.5) + coinActionSettings.buy):
+            action = 'exch';
+            break;        
         case price <= coinActionSettings.buy:
             action = 'buy';
             break;
         case price >= coinActionSettings.sell:
             action = 'sell';
-            break;
+            break;          
         default:
             action = '';
     }
