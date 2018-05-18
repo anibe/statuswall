@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import config from './config.json';
-import Coin from './Coin/Coin';
+import Word from './Word/Word';
 import './App.css';
 
 class App extends Component {
@@ -42,7 +42,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Coin apikey={config.api.alphavantage.key} />
+        <Word/>
       </div>
     );
   }
