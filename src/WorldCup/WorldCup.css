@@ -1,0 +1,15 @@
+/* @font-face {
+    font-family: ‘Dusha’; src: url(‘Dusha.ttf’) format(‘truetype’);
+    font-weight:normal;
+    font-style:normal;
+} */
+
+.WorldCup {
+    background-color: #0f4583;
+    background-image: url(https://www.fifa.com/assets/img/tournaments/17/2018/common/fwc_darkbluebg.png);
+    font-family: 'Dusha';
+}
+
+.WorldCup h3 {
+    color: #f7f2af;
+}
