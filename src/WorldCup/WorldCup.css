@@ -7,9 +7,35 @@
 .WorldCup {
     background-color: #0f4583;
     background-image: url(https://www.fifa.com/assets/img/tournaments/17/2018/common/fwc_darkbluebg.png);
+    background-size: cover;
     font-family: 'Dusha';
 }
 
 .WorldCup h3 {
     color: #f7f2af;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+}
+
+.WorldCup li {
+    font-size: 6vw;
+}
+
+.WorldCup li .watched {
+    display: inline-block;
+    padding-right: 54px;
+    background-repeat: no-repeat;
+    background-size: auto 33px;
+    background-position: 100% 50%;
+}
+
+.WorldCup .Nigeria {
+    background-image: url(ng.svg);
+}
+
+.WorldCup .England {
+    background-image: url(en.svg);
+}
+
+.WorldCup .France {
+    background-image: url(fr.svg);
 }

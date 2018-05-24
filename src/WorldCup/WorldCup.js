@@ -136,11 +136,26 @@ class WorldCup extends Component {
 
             function formatTime(digit) {
                 return ("0" + digit).slice(-2);
-            }            
+            }
+            
+            function transformHTML4Flag(data) {
+                let transformed;
+                trackedCountries.forEach((country) => {
+                    if (data.includes(country)) {
+                        transformed = data.replace(country, '<b class="watched '+ country +'">'+ country +'</b>');
+                    }
+                });
+
+                if (transformed) {
+                    return transformed;
+                } else {
+                    return data;
+                }
+            }
 
             if (filteredEvents.length > 0) {
 
-                for (let i = 0; i < 5; i++) {
+                for (let i = 0; i < 3; i++) {
                     var event = filteredEvents[i];
                     var when = event.start.dateTime;
                     var time = null;
@@ -151,8 +166,8 @@ class WorldCup extends Component {
                     }
                     eventListHTML += '<li><div class="dates">';
                     eventListHTML += formatDate(when) +'</div><h4>';
-                    eventListHTML += event.summary;
-                    eventListHTML += time ? '<span class="time">'+ time +'</span>' : '';
+                    eventListHTML += transformHTML4Flag(event.summary);
+                    eventListHTML += time ? '<br/><span class="time">'+ time +'</span>' : '';
                     eventListHTML += '</h4></li>';
                 }
 
