@@ -17,7 +17,7 @@
 }
 
 .WorldCup li {
-    font-size: 5vw;
+    font-size: 4vw;
 }
 
 .WorldCup li .watched {
@@ -38,4 +38,12 @@
 
 .WorldCup .France {
     background-image: url(fr.svg);
+}
+
+.WorldCup .Spain {
+    background-image: url(es.svg);
+}
+
+.WorldCup .Uruguay {
+    background-image: url(uy.svg);
 }
