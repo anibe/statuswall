@@ -47,3 +47,11 @@
 .WorldCup .Uruguay {
     background-image: url(uy.svg);
 }
+
+.WorldCup .Germany {
+    background-image: url(de.svg);
+}
+
+.WorldCup .Brazil {
+    background-image: url(br.svg);
+}

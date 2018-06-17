@@ -12,7 +12,7 @@ const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v
 // included, separated by spaces.
 const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 
-const trackedCountries = ['Nigeria', 'England', 'France', 'Spain', 'Uruguay'];
+const trackedCountries = ['Nigeria', 'England', 'France', 'Spain', 'Uruguay', 'Germany', 'Brazil'];
 
 class WorldCup extends Component {
 
