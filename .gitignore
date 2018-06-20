@@ -9,6 +9,7 @@
 # production
 /build
 config.json
+src/config.backup.json
 
 # misc
 .DS_Store

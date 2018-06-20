@@ -1,0 +1,1 @@
+echo "{\"api\": {\"weatherunderground\": {\"key\": \"$APP_WU_KEY\"},\"googlecalendar\": {\"clientid\":\"$APP_GC_CLIENTID\",\"clientsecret\": \"$APP_GC_CLIENTSECRET\"},\"alphavantage\": {\"key\":\"$APP_AV_KEY\"}},\"content\": {\"greeting\": {\"messageHTML\":\"$APP_GREETING_MSGHTML\",\"backgroundImageUrl\":\"\"}}}" > src/config.json
