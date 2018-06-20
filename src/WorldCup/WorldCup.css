@@ -3,7 +3,7 @@
     src: url(dusha.eot) format('embedded-opentype'), 
         url(dusha.woff2) format('woff2'),
         url(dusha.woff) format('woff'),
-        url(dusha.ttf)  format('truetype'),
+        /* url(dusha.ttf)  format('truetype'), */
         url(dusha.svg#svgFontName) format('svg');
         font-weight: normal;
         font-style: normal;
