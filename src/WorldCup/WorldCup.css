@@ -1,23 +1,29 @@
-/* @font-face {
-    font-family: ‘Dusha’; src: url(‘Dusha.ttf’) format(‘truetype’);
-    font-weight:normal;
-    font-style:normal;
-} */
+@font-face {
+    font-family: 'Dusha';
+    src: url(dusha.eot) format('embedded-opentype'), 
+        url(dusha.woff2) format('woff2'),
+        url(dusha.woff) format('woff'),
+        url(dusha.ttf)  format('truetype'),
+        url(dusha.svg#svgFontName) format('svg');
+        font-weight: normal;
+        font-style: normal;
+}
 
 .WorldCup {
     background-color: #0f4583;
     background-image: url(https://www.fifa.com/assets/img/tournaments/17/2018/common/fwc_darkbluebg.png);
     background-size: cover;
-    font-family: 'Dusha';
 }
 
 .WorldCup h3 {
     color: #f7f2af;
     text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+    font-family: 'Dusha';
 }
 
 .WorldCup li {
     font-size: 5vw;
+    font-family: 'Dusha';    
 }
 
 .WorldCup li .watched {
