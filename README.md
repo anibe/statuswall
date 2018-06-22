@@ -1,4 +1,6 @@
 # StatusWall
+[ ![Codeship Status for anibe/statuswall](https://app.codeship.com/projects/6ee2c350-5478-0136-2770-72f4c33b5270/status?branch=master)](https://app.codeship.com/projects/294415)
+
 A digital wall clock & vital info dashboard app.
 I'm builing this as a first React project bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
