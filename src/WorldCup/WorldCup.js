@@ -155,7 +155,7 @@ class WorldCup extends Component {
 
             if (filteredEvents.length > 0) {
 
-                for (let i = 0; i < 4; i++) {
+                for (let i = 0; i < 3; i++) {
                     var event = filteredEvents[i];
                     var when = event.start.dateTime;
                     var time = null;
