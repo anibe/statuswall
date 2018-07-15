@@ -1,0 +1,71 @@
+.App .Calendar.applet .sub-title {
+    color: rgb(255,255,255);
+}
+
+.Calendar h3 {
+    font-size: 7vw;
+    margin: 0 0 0.5rem;
+    letter-spacing: 0.4rem;
+    color: #fff;
+    padding-left: 35px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: 0.75;
+}
+
+.Calendar h4 span {
+    opacity: 0.7;
+}
+
+.Calendar h4 span.time {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    font-size: 0.75em;
+    padding: 4px;
+    margin-left: 0.5em;
+}
+
+.Calendar ul {
+    padding: 0;
+}
+
+.Calendar li {
+    color: rgb(255,255,255);
+    display: flex;
+    font-size: 5vw;
+    text-align: left;
+    padding: 15px 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+}
+
+.Calendar .dates {
+    width: 24%;
+    flex: 0 1 24%;
+    font-size: 3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Calendar li:nth-child(odd) {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.Calendar h4 {
+    flex: 0 1 70%;
+    margin: 0;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+}
+
+.Calendar h4 em {
+    display: inline-block;
+    transform: translateY(-25px) scale(4);
+    padding-left: 10px;
+    text-shadow: none;
+}
+
+.Calendar button {
+    background: none;
+    border: none;
+}

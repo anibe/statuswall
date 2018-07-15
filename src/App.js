@@ -3,9 +3,9 @@ import config from './config.json';
 import Clock from './Clock/Clock';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
-import Coin from './Coin/Coin';
+// import Coin from './Coin/Coin';
 import './App.css';
-import WorldCup from './WorldCup/WorldCup';
+import ArsenalFixtures from './ArsenalFixtures/ArsenalFixtures';
 
 class App extends Component {
 
@@ -49,8 +49,7 @@ class App extends Component {
       <div className="App">
         <Weather apikey={config.api.weatherunderground.key} />
         <Calendar />
-        <WorldCup />
-        <Coin apikey={config.api.alphavantage.key} />
+        <ArsenalFixtures />
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
