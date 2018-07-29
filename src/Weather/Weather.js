@@ -32,7 +32,7 @@ class Weather extends Component {
                 timeOfDay: isNight ? 'night' : 'day'
             });
             this.saveForecast();
-            console.log('Weather last updated '+ rightNow);
+            console.log('Weather updated from network '+ rightNow);
         }
         
         var oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill

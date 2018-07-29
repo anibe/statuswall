@@ -3,9 +3,8 @@ import config from './config.json';
 import Clock from './Clock/Clock';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
-// import Coin from './Coin/Coin';
+import Coin from './Coin/Coin';
 import './App.css';
-import ArsenalFixtures from './ArsenalFixtures/ArsenalFixtures';
 
 class App extends Component {
 
@@ -16,7 +15,19 @@ class App extends Component {
       'Clock': {
         'is24HourFormat': true,
         'colour':'#ca8fa3'
-      }
+      },
+      'Events': {
+        title: 'Events',
+        calendarId: 'primary',
+        maxResults: 5,
+        backgroundColor: '#68a39d'
+      },
+      'Arsenal': {
+        title: 'Arsenal',
+        calendarId: 'uhdj9bf33sav2qqml8gii7l2nutab9l3@import.calendar.google.com',
+        maxResults: 4,
+        backgroundColor: '#a8312d'
+      }      
     }
   }
 
@@ -48,8 +59,9 @@ class App extends Component {
     return (
       <div className="App">
         <Weather apikey={config.api.weatherunderground.key} />
-        <Calendar />
-        <ArsenalFixtures />
+        <Calendar settings={this.settings.Events} />
+        <Calendar settings={this.settings.Arsenal} />
+        <Coin />
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );

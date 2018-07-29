@@ -29,7 +29,8 @@ class Calendar extends Component {
                 authStyle: 'none',
                 soStyle: 'none'
             }
-        }
+        };
+        this.options = props.settings;
     }
 
     handleClientLoad() {
@@ -87,14 +88,14 @@ class Calendar extends Component {
      */
     listUpcomingEvents(context) {
         window.gapi.client.calendar.events.list({
-            'calendarId': 'primary',
+            'calendarId': this.options.calendarId,
             'timeMin': (new Date()).toISOString(),
             'showDeleted': false,
             'singleEvents': true,
-            'maxResults': 5,
+            'maxResults': this.options.maxResults,
             'orderBy': 'startTime'
         }).then(function(response) {
-            console.log('calendar updated');
+            console.log(context.options.title +' calendar updated');
             let events = response.result.items,
                 eventListHTML = '';
 
@@ -211,12 +212,12 @@ class Calendar extends Component {
 
     render() {
         const inlineStyles = {
-            backgroundColor: '#68a39d'
+            backgroundColor: this.options.backgroundColor
         };
 
         return (            
             <div className="Calendar applet" style={inlineStyles}>
-                <h3>Events</h3>
+                <h3>{this.options.title}</h3>
                 <ul dangerouslySetInnerHTML={{ __html: this.state.eventListHTML}}/>
                 <button id="authorize-button" onClick={this.handleAuthClick} style={{display: this.state.buttons.authStyle}}>Authorize</button>
                 <button id="signout-button" onClick={this.handleSignoutClick} style={{display: this.state.buttons.soStyle}}>Sign Out</button>
