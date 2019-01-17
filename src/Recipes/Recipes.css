@@ -40,7 +40,7 @@ h3 {
 .sauce {
     font-family: Arial, Helvetica, sans-serif;
     padding: 4px;
-    background-color: #CDCDCD;
+    background-color: rgb(151, 151, 151);
     color: #fff;
     font-size: 4vh;
     border-radius: 10px;
@@ -48,15 +48,16 @@ h3 {
 }
 
 .ingredients {
-    color: #C3C3C3;
+    color: rgb(117, 117, 117);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 5vh;
     text-align: left;
 }
 
 .next-recipe {
-    background: #C2D3C1;
+    background: rgb(119, 161, 117);
     border-radius: 30px;
+    border: none;
     color: #fff;
     text-transform: uppercase;
     margin: 30px 0 0;
