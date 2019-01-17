@@ -1,12 +1,21 @@
 .Weather .icon {
-    transform: translateY(100px) scale(8);
-    min-height: 50px; 
+    /* transform: translateY(100px) scale(8); */
+    min-height: 140px;
+    margin-top: -80px;
+    background-size: contain;
 }
 
 .Weather .other-days {
     display: flex;
     align-content: space-around;
     align-items: flex-end;
+    opacity: 0.8;
+}
+
+.Weather .other-days .data {
+    display: flex;
+    margin: 0 70px;
+    justify-content: space-evenly;
 }
 
 .Weather .other-days > * {
@@ -21,5 +30,48 @@
 }
 
 .Weather .other-days .small-icon {
-    transform: translateY(-130px) translateX(120px) scale(4);
+    /* transform: translateY(-130px) translateX(120px) scale(4); */
+    /* min-height: 50px; */
+    background-size: contain;
+    width: 50%;
 }
+
+.partlycloudy {
+    background: url('partlycloudy.svg') no-repeat 50%;
+}
+
+.sunny {
+    background: url('sunny.svg') no-repeat 50%;
+}
+.cloudy {
+    /* background: url('cloudy.svg') no-repeat 50%; */
+    background: url('partlycloudy.svg') no-repeat 50%;
+}
+/* .chancerain {
+    background: url('chancerain.svg') no-repeat 50%;
+}
+.chancestorms {
+    background: url('chancetstorms.svg') no-repeat 50%;
+}
+.tstroms {
+    background: url('tstroms.svg') no-repeat 50%;
+}
+.halfmoon {
+    background: url('halfmoon.svg') no-repeat 50%;
+}
+.fullmoon {
+    background: url('fullmoon.svg') no-repeat 50%;
+}
+.snow {
+    background: url('snow.svg') no-repeat 50%;
+}
+.rain {
+    background: url('rain.svg') no-repeat 50%;
+}
+.mostlycloudy {
+    background: url('mostlycloudy.svg') no-repeat 50%;
+}
+
+.fog {
+    background: url('fog.svg') no-repeat 50%;
+} */
