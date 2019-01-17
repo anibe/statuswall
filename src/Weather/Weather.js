@@ -85,19 +85,19 @@ class Weather extends Component {
     mapIcons(apiIconLabel) {
         // http://unicode.org/emoji/charts/full-emoji-list.html
         let emojiIconTable = {
-                'partlycloudy': '⛅',//'U+1F325',
-                'chancerain':'🌦',
-                'storm':'⛈',
-                'chancetstorms':'⛈',
-                'tstorms':'🌩',
-                'partlysunny': this.state.timeOfDay === 'day' ? '🌤':'🌜',
-                'sunny': this.state.timeOfDay === 'day' ? '☀':'🌕',
-                'clear':this.state.timeOfDay === 'day' ? '☀':'🌕',
-                'snow':'🌨',
-                'rain':'🌧',
-                'mostlycloudy':'☁☁',
-                'cloudy':'☁',
-                'fog':'🌫'
+                'partlycloudy': 'partlycloudy.svg',//'U+1F325',
+                'chancerain':'chancerain.svg',
+                'storm':'storm.svg',
+                'chancetstorms':'chancestorms.svg',
+                'tstorms':'tstroms.svg',
+                'partlysunny': this.state.timeOfDay === 'day' ? 'partlycloudy.svg':'halfmoon.svg',
+                'sunny': this.state.timeOfDay === 'day' ? 'sunny.svg':'fullmoon.svg',
+                'clear':this.state.timeOfDay === 'day' ? 'sunny.svg':'fullmoon.svg',
+                'snow':'snow.svg',
+                'rain':'rain.svg',
+                'mostlycloudy':'mostlycloudy.svg',
+                'cloudy':'cloudy.svg',
+                'fog':'fog.svg'
             };
 
         return emojiIconTable[apiIconLabel];
@@ -120,17 +120,17 @@ class Weather extends Component {
                 <div className="main-title">
                     {this.state.forecast.today[0]}&deg;
                 </div>
-                <div className="no-font icon">{this.mapIcons(this.state.forecast.today[1])}</div>
+                <div className="no-font icon"><img src={this.mapIcons(this.state.forecast.today[1])} width="40" height="40" /></div>
                 <div className="other-days">
                     <div className="tomorrow">
                         <div className="heading">Tomorrow</div>
                         {this.state.forecast.tomorrow[0]}&deg;
-                        <div className="small-icon">{this.mapIcons(this.state.forecast.tomorrow[1])}</div>
+                        <div className="small-icon"><img src={this.mapIcons(this.state.forecast.tomorrow[1])} width="40" height="40" /></div>
                     </div>
                     <div className="nexttomorrow">
                         <div className="heading">{this.twoDaysFromToday()}</div>
                         {this.state.forecast.nexttomorrow[0]}&deg;
-                        <div className="small-icon">{this.mapIcons(this.state.forecast.nexttomorrow[1])}</div>
+                        <div className="small-icon"><img src={this.state.forecast.nexttomorrow[1]} width="40" height="40" /></div>
                     </div>
                 </div>
             </div>
