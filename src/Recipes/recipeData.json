@@ -1,0 +1,44 @@
+{
+    "recipes": [
+        {
+            "name": "Couscous salad with Salmon",
+            "source": "Eat Well For Less",
+            "sourceRef": "Page 82",
+            "cookingDuration": "25",
+            "keyIngredients": "vegetable stock, coucous, rapeseed, salmon, baby spinach",
+            "imageUrl": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/harissa-salmon-with-zesty-couscous.jpg?itok=8ScQpTNX"
+        },
+        {
+            "name": "Microwave tomato risotto",
+            "source": "Eat Well For Less",
+            "sourceRef": "Page 101",
+            "cookingDuration": "22",
+            "keyIngredients": "butter, passata, arbino rice, cherry tomatoes, mozarella",
+            "imageUrl": "https://images.cookforyourlife.org/wp-content/uploads/2018/08/Tomato-Risotto.jpg"
+        },
+        {
+            "name": "Sausage and tomato pasta",
+            "source": "Eat Well For Less",
+            "sourceRef": "Page 108",
+            "cookingDuration": "18",
+            "keyIngredients": "rapeseed oil, sausages, onion, garlic, carrot, pasta",
+            "imageUrl": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--7834_10.jpg?itok=1-W6ISWg"
+        },
+        {
+            "name": "Spiced chicken with roasted vegetable rice",
+            "source": "Eat Well For Less",
+            "sourceRef": "Page 45",
+            "cookingDuration": "40",
+            "keyIngredients": "olive oil, smoked paprika, basil, cayenne papper, chicken, courgette",
+            "imageUrl": "https://flockler.com/thumbs/sites/192/spiced-chicken_s600x600_c744x434_l0x294.png"
+        },
+        {
+            "name": "Shredded sprouts with chestnuts and bacon",
+            "source": "Eat Well For Less",
+            "sourceRef": "Page 144",
+            "cookingDuration": "10",
+            "keyIngredients": "olive oil, sliced bacon, brussels sprouts, lemon",
+            "imageUrl": "https://flockler.com/thumbs/sites/192/sprouts-with-chestnuts-and-bacon-image_s600x600_c2214x1294_l0x968.png"
+        }
+    ]
+}

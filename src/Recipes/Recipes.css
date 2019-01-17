@@ -1,0 +1,67 @@
+.App .Recipes.applet.active .main-title {
+    font-size: 8vw;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.Recipes .meal-detail {
+    display: flex;
+    background: rgba(255,255,255,0.8);
+    height: 75vh;
+}
+
+.time-to-cook {
+    font-size: 6vh;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    color: #909090;
+    margin: 18px 0;
+}
+
+.image {
+    width: 50%;
+}
+
+h3 {
+    color: #909090;
+    font-weight: normal;
+    font-size: 7vh;
+    margin: 0 0 15px;
+    text-align: left;
+    max-height: 163px;
+    overflow: hidden;
+}
+
+.details {
+    padding: 30px;
+    width: 50%;
+}
+
+.sauce {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 4px;
+    background-color: #CDCDCD;
+    color: #fff;
+    font-size: 4vh;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.ingredients {
+    color: #C3C3C3;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5vh;
+    text-align: left;
+}
+
+.next-recipe {
+    background: #C2D3C1;
+    border-radius: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 30px 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3vh;
+    padding: 10px 30px;
+}
+
