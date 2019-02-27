@@ -142,11 +142,6 @@ class Calendar extends Component {
             }            
 
             if (events.length > 0) {
-                let lastRecordedEventDate;
-
-                function makeDateString(date) {
-                    return new Date(date).toDateString();
-                }
 
                 for (let i = 0; i < events.length; i++) {
                     var event = events[i];
@@ -158,12 +153,11 @@ class Calendar extends Component {
                         time = formatTime(new Date(when).getHours()) +':'+ formatTime(new Date(when).getMinutes());
                     }
                     eventListHTML += '<li><div class="dates">';
-                    eventListHTML += makeDateString(event.start.dateTime) === makeDateString(lastRecordedEventDate) ? '' : formatDate(when);
+                    eventListHTML += formatDate(when);
                     eventListHTML += '</div><h4>';
                     eventListHTML += event.summary;
                     eventListHTML += time ? '<span class="time">'+ time +'</span>' : '';
                     eventListHTML += '</h4></li>';
-                    lastRecordedEventDate = event.start.dateTime;
                 }
 
                 context.setState({
