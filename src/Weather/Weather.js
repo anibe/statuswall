@@ -46,9 +46,11 @@ class Weather extends Component {
     }
 
     loadStoredForecast() {
-        this.setState({
-            forecast: JSON.parse(localStorage.cachedForecast)
-        });
+        if (localStorage.cachedForecast) {
+            this.setState({
+                forecast: JSON.parse(localStorage.cachedForecast)
+            });
+        }
     }
 
     setWeatherCookie(hours) {
