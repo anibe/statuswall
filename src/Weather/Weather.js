@@ -5,9 +5,10 @@ class Weather extends Component {
 
     constructor(props){
         super();
-        this.apikey =  props.apikey;
-        this.apiEndpoint = 'http://api.wunderground.com/api/'+ this.apikey +'/forecast/q/';
-        this.location = 'UK/Hemel%20Hempstead';
+        this.apikey = 'e9jdE9IoDZTAS2lZippALSfGar8eAiIy'; // props.apikey;
+        // this.apiEndpoint = 'http://api.wunderground.com/api/'+ this.apikey +'/forecast/q/';
+        this.location = 328487; //'UK/Hemel%20Hempstead';
+        this.apiEndpoint = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.location}?apikey=${this.apikey}&metric=true`;
         this.state = {
             forecast: {
                 today: [],
@@ -21,13 +22,14 @@ class Weather extends Component {
 
     getForecast() {
         let rightNow = new Date(),
-            isNight = !(rightNow.getHours() >= 7 && rightNow.getHours() < 20);
+            isNight = !(rightNow.getHours() >= 7 && rightNow.getHours() < 19);
         function reqListener (e) {
+            const data = JSON.parse(e.target.responseText);
             this.setState({
-                forecast: {
-                    today: [JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[0].high.celsius, JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[0].icon],
-                    tomorrow: [JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[1].high.celsius, JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[1].icon],
-                    nexttomorrow: [JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[2].high.celsius, JSON.parse(e.target.responseText).forecast.simpleforecast.forecastday[2].icon]    
+                forecast: {    
+                    today: [parseInt(data.DailyForecasts[0].Temperature.Maximum.Value, 10), isNight ? data.DailyForecasts[0].Night.IconPhrase : data.DailyForecasts[0].Day.IconPhrase],
+                    tomorrow: [parseInt(data.DailyForecasts[1].Temperature.Maximum.Value, 10), isNight ? data.DailyForecasts[1].Night.IconPhrase : data.DailyForecasts[1].Day.IconPhrase],
+                    nexttomorrow: [parseInt(data.DailyForecasts[2].Temperature.Maximum.Value, 10), isNight ? data.DailyForecasts[2].Night.IconPhrase : data.DailyForecasts[2].Day.IconPhrase]
                 },
                 timeOfDay: isNight ? 'night' : 'day'
             });
@@ -37,7 +39,7 @@ class Weather extends Component {
         
         var oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill
         oReq.addEventListener("load", reqListener.bind(this));
-        oReq.open('GET', this.apiEndpoint + this.location +'.json');
+        oReq.open('GET', this.apiEndpoint);
         oReq.send();
     }
 
@@ -87,18 +89,18 @@ class Weather extends Component {
     mapIcons(apiIconLabel) {
         // http://unicode.org/emoji/charts/full-emoji-list.html
         let emojiIconTable = {
-                'partlycloudy': 'partlycloudy',//'U+1F325',
+                'Partly cloudy': 'partlycloudy',//'U+1F325',
                 'chancerain':'chancerain',
                 'storm':'storm',
                 'chancetstorms':'chancestorms',
                 'tstorms':'tstroms',
-                'partlysunny': this.state.timeOfDay === 'day' ? 'partlycloudy':'halfmoon',
-                'sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
-                'clear':this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
-                'snow':'snow',
-                'rain':'rain',
-                'mostlycloudy':'cloudy',
-                'cloudy':'cloudy',
+                'Partly sunny': this.state.timeOfDay === 'day' ? 'partlycloudy':'halfmoon',
+                'Sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
+                'Clear':this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
+                'Snow':'snow',
+                'Rain':'rain',
+                'Mostly cloudy':'cloudy',
+                'Cloudy':'cloudy',
                 'fog':'fog'
             };
 
