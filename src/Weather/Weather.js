@@ -93,15 +93,20 @@ class Weather extends Component {
                 'chancerain':'chancerain',
                 'storm':'storm',
                 'chancetstorms':'chancestorms',
-                'tstorms':'tstroms',
+                'T-Storms':'tstroms',
                 'Partly sunny': this.state.timeOfDay === 'day' ? 'partlycloudy':'halfmoon',
                 'Sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
                 'Clear':this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
                 'Snow':'snow',
                 'Rain':'rain',
-                'Mostly cloudy':'cloudy',
+                'Mostly cloudy':'mostlycloudy',
                 'Cloudy':'cloudy',
-                'fog':'fog'
+                'Fog':'fog',
+                'Mostly Sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
+                'Hazy Sunshine': 'partlycloudy',
+                'Dreary (Overcast)': 'mostlycloudy',
+                'Showers':'rain',
+                'Mostly Cloudy w/ Showers': 'mostlycloudy'               
             };
 
         return emojiIconTable[apiIconLabel];
