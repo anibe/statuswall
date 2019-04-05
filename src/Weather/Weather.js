@@ -89,7 +89,7 @@ class Weather extends Component {
     mapIcons(apiIconLabel) {
         // http://unicode.org/emoji/charts/full-emoji-list.html
         let emojiIconTable = {
-                'Partly cloudy': 'partlycloudy',//'U+1F325',
+                'Intermittent clouds': 'partlycloudy',//'U+1F325',
                 'chancerain':'chancerain',
                 'storm':'storm',
                 'chancetstorms':'chancestorms',
