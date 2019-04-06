@@ -75,6 +75,10 @@
     background: url('fog.svg') no-repeat 50%;
 }
 
+.sunnyrain {
+    background: url('sunnyrain.svg') no-repeat 50%;
+}
+
 .credits {
     font-family: Arial, Helvetica, sans-serif;
     margin: 30px 0 ;

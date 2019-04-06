@@ -106,7 +106,8 @@ class Weather extends Component {
                 'Hazy Sunshine': 'partlycloudy',
                 'Dreary (Overcast)': 'mostlycloudy',
                 'Showers':'rain',
-                'Mostly Cloudy w/ Showers': 'mostlycloudy'               
+                'Mostly cloudy w/ showers': 'rain',
+                'Partly sunny w/ showers':'sunnyrain'               
             };
 
         return emojiIconTable[apiIconLabel];
