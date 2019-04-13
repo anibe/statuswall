@@ -93,7 +93,7 @@ class Weather extends Component {
                 'chancerain':'chancerain',
                 'storm':'storm',
                 'chancetstorms':'chancestorms',
-                'T-Storms':'tstroms',
+                'Thunderstorms':'tstroms',
                 'Partly sunny': this.state.timeOfDay === 'day' ? 'partlycloudy':'halfmoon',
                 'Sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
                 'Clear':this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
