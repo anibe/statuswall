@@ -21,7 +21,7 @@ class Weather extends Component {
     }
 
     getForecast() {
-        let rightNow = new Date(),
+        const rightNow = new Date(),
             isNight = !(rightNow.getHours() >= 7 && rightNow.getHours() < 19);
         function reqListener (e) {
             const data = JSON.parse(e.target.responseText);
@@ -107,7 +107,9 @@ class Weather extends Component {
                 'Dreary (Overcast)': 'mostlycloudy',
                 'Showers':'rain',
                 'Mostly cloudy w/ showers': 'rain',
-                'Partly sunny w/ showers':'sunnyrain'               
+                'Partly sunny w/ showers':'sunnyrain',          
+                'Partly cloudy':'partlycloudy',
+                'Mostly sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon'    
             };
 
         return emojiIconTable[apiIconLabel];
