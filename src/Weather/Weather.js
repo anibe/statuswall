@@ -109,7 +109,8 @@ class Weather extends Component {
                 'Mostly cloudy w/ showers': 'rain',
                 'Partly sunny w/ showers':'sunnyrain',          
                 'Partly cloudy':'partlycloudy',
-                'Mostly sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon'    
+                'Mostly sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
+                'Partly sunny w/ t-storms': 'sunnyrain'  
             };
 
         return emojiIconTable[apiIconLabel];
