@@ -67,12 +67,13 @@
 
 .App .applet.active {
   position: absolute;
-  height: 105%; /* To help hide address bar */
+  height: 100%; /* To help hide address bar */
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 30px 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .App .applet.active .main-title {
@@ -89,4 +90,19 @@
   background-position: 50% 65%;
   background-size: 10%;
   opacity: 0.3;
+}
+
+.App .fullscreen-btn {
+  display: none;
+}
+
+.App .applet.active .fullscreen-btn {
+  border: none;
+  background: none;
+  display: block;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 20px;
 }
