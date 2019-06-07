@@ -97,6 +97,7 @@ class Weather extends Component {
                 'Partly sunny': this.state.timeOfDay === 'day' ? 'partlycloudy':'halfmoon',
                 'Sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
                 'Clear':this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
+                'Mostly clear':this.state.timeOfDay === 'day' ? 'partlycloudy':'halfmoon',
                 'Snow':'snow',
                 'Rain':'rain',
                 'Mostly cloudy':'mostlycloudy',
