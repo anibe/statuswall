@@ -108,7 +108,8 @@ class Weather extends Component {
                 'Dreary (Overcast)': 'mostlycloudy',
                 'Showers':'rain',
                 'Mostly cloudy w/ showers': 'rain',
-                'Partly sunny w/ showers':'sunnyrain',          
+                'Partly sunny w/ showers':'sunnyrain',
+                'Partly cloudy w/ showers': 'rain',          
                 'Partly cloudy':'partlycloudy',
                 'Mostly sunny': this.state.timeOfDay === 'day' ? 'sunny':'fullmoon',
                 'Partly sunny w/ t-storms': 'sunnyrain'  
