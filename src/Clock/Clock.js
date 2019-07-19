@@ -44,11 +44,6 @@ class Clock extends Component {
     });
   }
 
-  requestFullscreen() {
-    // document.requestFullscreen();
-    document.querySelector('.App').requestFullscreen();
-  }
-
   render() {
     const inlineStyles = {
       backgroundColor: this.colour
@@ -69,7 +64,6 @@ class Clock extends Component {
           </span>
         </div>
         <div className="sub-title date">{this.showDate()}</div>
-        <button className="fullscreen-btn" onClick={this.requestFullscreen}>[ ]</button>
       </div>
     );
   }

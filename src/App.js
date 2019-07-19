@@ -4,7 +4,6 @@ import Clock from './Clock/Clock';
 import Coin from './Coin/Coin';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
-import Recipes from './Recipes/Recipes';
 import './App.css';
 
 class App extends Component {
@@ -62,7 +61,6 @@ class App extends Component {
         <Weather apikey={config.api.weatherunderground.key} />
         <Calendar settings={this.settings.Events} />
         <Calendar settings={this.settings.Arsenal} />
-        <Recipes />
         <Coin />
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
