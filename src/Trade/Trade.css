@@ -1,0 +1,99 @@
+.App .Trade.applet .sub-title {
+    color: rgb(255,255,255);
+}
+
+.Trade {
+    color: #f7f6de;
+    font-size: 5.5vw;
+}
+
+.Trade h3 {
+    margin: 0 0 0.5rem;
+    letter-spacing: 0.4rem;
+    color: #fff;
+    padding-left: 35px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: 0.75;
+}
+
+.Trade .symbol {
+    width: 30%;
+    flex: 0 1 30%;
+    /* font-size: 3rem; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Trade h4 span {
+    opacity: 0.7;
+}
+
+.Trade h4 span.symbol {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    font-size: 0.75em;
+    padding: 4px;
+    margin-left: 0.5em;
+}
+
+.Trade ul {
+    padding: 0;
+}
+
+.Trade li {
+    display: flex;
+    text-align: left;
+    padding: 15px 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+}
+
+.Trade li:nth-child(odd) {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.Trade h4 {
+    flex: 0 1 70%;
+    margin: 0;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+}
+
+.Trade h4 em {
+    display: inline-block;
+    transform: translateY(-25px) scale(4);
+    padding-left: 10px;
+    text-shadow: none;
+}
+
+.Trade button {
+    background: none;
+    border: none;
+}
+
+.Trade li.sell {
+    background-color: rgba(101, 255, 70, 0.4);
+}
+
+.Trade li.buy {
+    background-color: rgba(255, 190, 70, 0.4);
+}
+
+.Trade .action {
+    text-transform: uppercase;
+}
+
+.Trade .gain {
+    color: #6fce75;
+}
+
+.Trade .loss {
+    color: #dd4e4b;
+}
+
+.Trade .last-update {
+    font-size: 3vw;
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: 0.4;
+}
