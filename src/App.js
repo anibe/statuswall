@@ -4,6 +4,7 @@ import Clock from './Clock/Clock';
 import Coin from './Coin/Coin';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
+import Greeting from './Greeting/Greeting';
 import './App.css';
 
 class App extends Component {
@@ -27,7 +28,10 @@ class App extends Component {
         calendarId: 'uhdj9bf33sav2qqml8gii7l2nutab9l3@import.calendar.google.com',
         maxResults: 4,
         backgroundColor: '#a8312d'
-      }      
+      },
+      'Greeting': {
+        messageHTML: '<h1 class="main-title">Merry Christmas!</h1>'
+      }
     }
   }
 
@@ -63,6 +67,7 @@ class App extends Component {
         <Calendar settings={this.settings.Arsenal} />
         <Coin />
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
+        <Greeting content={this.settings.Greeting} />
       </div>
     );
   }
