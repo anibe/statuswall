@@ -118,7 +118,7 @@ class Trade extends Component {
 
     return (
       <div className="Trade applet" style={inlineStyles}>
-      <h3>Trade</h3>
+      <h3>{this.settings.settings.title}</h3>
         <ul dangerouslySetInnerHTML={{ __html: this.state.coinListHTML}}/>
         <div className="last-update">Prices as at {this.state.lastUpdated}</div>
       </div>

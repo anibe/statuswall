@@ -30,7 +30,7 @@ class App extends Component {
         backgroundColor: '#a8312d'
       },
       'Trade': {
-        title: 'Trade',
+        title: 'Rates',
         currency: 'GBP',
         endpointString: 'https://free.currconv.com/api/v7/convert?q=GBP_{symbol}&compact=ultra&apiKey=c5b8b4054f212b5a5e84',
         properties: [{
