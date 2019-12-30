@@ -5,147 +5,33 @@ class Trade extends Component {
 
   constructor(props) {
     super();
-    this.settings = {
-        currency: 'GBP',
-        apikey: props.apikey,
-        coins: [{
-            "id": "bitcoin",
-            "symbol": "BTC",
-            "buy": 7800,
-            "sell": 24000
-        },
-        {
-            "id":"ethereum",
-            "symbol": "ETH",
-            "buy": 780,
-            "sell": 1900    
-        },
-        {
-            "id": "ripple",
-            "symbol": "XRP",
-            "buy": 0.9,
-            "sell": 4    
-        },        
-        {
-            "id": "neo",
-            "symbol": "NEO",
-            "buy": 100,
-            "sell": 300    
-        },
-        {
-            "id": "vechain",
-            "symbol": "VEN",
-            "buy": 4.6,
-            "sell": 17    
-        },                
-        {
-            "id": "omisego",
-            "symbol": "OMG",
-            "buy": 10.5,
-            "sell": 40
-        },
-        {
-            "id": "stratis",
-            "symbol": "STRAT",
-            "buy": 8,
-            "sell": 32  
-        },        
-        {
-            "id": "stellar",
-            "symbol": "XLM",
-            "buy": 0.4,
-            "sell": 1.2  
-        },
-        {
-            "id": "qash",
-            "symbol": "QASH",
-            "buy": 0.8,
-            "sell": 2.4  
-        },
-        {
-            "id": "ignis",
-            "symbol": "IGNIS",
-            "buy": 0.4,
-            "sell": 1.6            
-        }]
-    };
+    this.settings = props;
+    const coinDataObj = {};
+    props.settings.properties.forEach(property => {
+        coinDataObj[property.symbol] = {
+            'currentPrice':'',
+            'change': '',
+            'direction':'',
+            'action':''            
+        };
+    });
     this.state = {
-        coinData: {
-            'BTC': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            },
-            'ETH': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            },
-            'XRP': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            },
-            'NEO': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            },
-            'VEN': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            },
-            'OMG': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            },
-            'STRAT': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            },            
-            'XLM': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            },
-            'QASH': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            },
-            'IGNIS': {
-                'currentPrice':'',
-                'change': '',
-                'direction':'',
-                'action':''
-            }                                                 
-        },
+        coinData: coinDataObj,
         lastUpdated: Date.now(),
         coinListHTML: ''
     };
-    this.intervalMins = 3;
+    this.intervalMins = 30;
   }
 
   refreshFromApi() {
       // get prices
       const app = this;
-      const settings = this.settings;
-      settings.coins.forEach(function(coin) {
-        var oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill
-        oReq.addEventListener("load", reqListener.bind(this, coin.symbol));
-        oReq.open('GET', 'https://api.coinmarketcap.com/v1/ticker/'+ coin.id  +'/?convert='+ settings.currency);
+      const settings = this.settings.settings;
+      settings.properties.forEach(function(property) {
+        const endpoint = settings.endpointString.replace(new RegExp(`{symbol}`, 'g'), property.symbol); // https://free.currconv.com/api/v7/convert?q={currency}_{symbol}&compact=ultra&apiKey={apikey}
+        const oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill
+        oReq.addEventListener("load", reqListener.bind(this, property.symbol));
+        oReq.open('GET', endpoint);
         oReq.send();        
       });
 
@@ -157,8 +43,8 @@ class Trade extends Component {
 
   updateCoinData(symbol, data) {
     let stateCoinData = Object.assign({}, this.state.coinData),
-        coinPrice = parseFloat(data[0]['price_'+ this.settings.currency.toLocaleLowerCase()]),
-        coinChange = parseFloat(data[0].percent_change_1h),
+        coinPrice = data[`${this.settings.settings.currency}_${symbol}`],
+        coinChange = this.state.coinData[symbol].currentPrice - coinPrice,
         lastUpdated = new Date(Date.now()),
         coinListHTML = '';
     
@@ -175,26 +61,25 @@ class Trade extends Component {
     }
 
     stateCoinData[symbol] = {
-        'currentPrice': formatMoney(coinPrice.toFixed(2)),
+        'currentPrice': coinPrice, // coinPrice.toFixed(2),
         'change': formatSign((coinChange).toFixed(2)),
         'direction': coinChange >= 0 ? 'gain': 'loss',
         'action': this.computeAction(symbol, coinPrice)
     };
-
+    
     Object.keys(this.state.coinData).forEach(function (key, index) {
-        coinListHTML += `<li class=${this.state.coinData[key].action}><div class="symbol">${key}</div> <h4 class="prices">£${this.state.coinData[key].currentPrice} <span class=${this.state.coinData[key].direction}>${this.state.coinData[key].change}%</span> <span class="action">${this.state.coinData[key].action}</span></h4></li>\n`;
-    }.bind(this));    
-
+        coinListHTML += `<li class=${this.state.coinData[key].action}><div class="symbol">${key}</div> <h4 class="prices">£${this.state.coinData[key].currentPrice} <span class=${this.state.coinData[key].direction}>${this.state.coinData[key].change}</span> <span class="action">${this.state.coinData[key].action}</span></h4></li>\n`;
+    }.bind(this));
+    
     this.setState({ 
         coinData: stateCoinData,
         lastUpdated: lastUpdated.toGMTString(),
         coinListHTML
-    });
+    });    
   }
 
   computeAction(symbol, price) {
-
-    var coinActionSettings = this.settings.coins.find(containsSymbol),
+    var coinActionSettings = this.settings.settings.properties.find(containsSymbol),
         action;
 
     function containsSymbol(coin) {
@@ -232,10 +117,10 @@ class Trade extends Component {
     };
 
     return (
-      <div className="Coin applet" style={inlineStyles}>
+      <div className="Trade applet" style={inlineStyles}>
       <h3>Trade</h3>
         <ul dangerouslySetInnerHTML={{ __html: this.state.coinListHTML}}/>
-        <div className="last-update">Prices as at {this.state.lastUpdated}. Source: coinmarketcap.com</div>
+        <div className="last-update">Prices as at {this.state.lastUpdated}</div>
       </div>
     );
   }

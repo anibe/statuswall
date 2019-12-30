@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import config from './config.json';
 import Clock from './Clock/Clock';
-import Coin from './Coin/Coin';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
+import Coin from './Coin/Coin';
+import Trade from './Trade/Trade';
 import './App.css';
 
 class App extends Component {
@@ -31,66 +32,24 @@ class App extends Component {
       'Trade': {
         title: 'Trade',
         currency: 'GBP',
-        apikey: props.apikey,
-        coins: [{
-            "id": "bitcoin",
-            "symbol": "BTC",
-            "buy": 7800,
-            "sell": 24000
+        endpointString: 'https://free.currconv.com/api/v7/convert?q=GBP_{symbol}&compact=ultra&apiKey=c5b8b4054f212b5a5e84',
+        properties: [{
+            "id": "naira",
+            "symbol": "NGN",
+            "buy": 1,
+            "sell": 500
+          },
+          {
+            "id": "euros",
+            "symbol": "EUR",
+            "buy": 1,
+            "sell": 2
         },
         {
-            "id":"ethereum",
-            "symbol": "ETH",
-            "buy": 780,
-            "sell": 1900    
-        },
-        {
-            "id": "ripple",
-            "symbol": "XRP",
-            "buy": 0.9,
-            "sell": 4    
-        },        
-        {
-            "id": "neo",
-            "symbol": "NEO",
-            "buy": 100,
-            "sell": 300    
-        },
-        {
-            "id": "vechain",
-            "symbol": "VEN",
-            "buy": 4.6,
-            "sell": 17    
-        },                
-        {
-            "id": "omisego",
-            "symbol": "OMG",
-            "buy": 10.5,
-            "sell": 40
-        },
-        {
-            "id": "stratis",
-            "symbol": "STRAT",
-            "buy": 8,
-            "sell": 32  
-        },        
-        {
-            "id": "stellar",
-            "symbol": "XLM",
-            "buy": 0.4,
-            "sell": 1.2  
-        },
-        {
-            "id": "qash",
-            "symbol": "QASH",
-            "buy": 0.8,
-            "sell": 2.4  
-        },
-        {
-            "id": "ignis",
-            "symbol": "IGNIS",
-            "buy": 0.4,
-            "sell": 1.6            
+          "id": "dollar",
+          "symbol": "USD",
+          "buy": 1,
+          "sell": 2
         }]
     }    
     }
