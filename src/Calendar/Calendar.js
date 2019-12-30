@@ -24,7 +24,7 @@ class Calendar extends Component {
                 },
                 summary: 'summary'
             }],
-            eventListHTML: '',
+            eventListHTML: '<li>No data from server. Please authorize your Google calender.</li>',
             buttons: {
                 authStyle: 'none',
                 soStyle: 'none'
