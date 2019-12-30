@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import config from './config.json';
 import Clock from './Clock/Clock';
-import Coin from './Coin/Coin';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
+import Coin from './Coin/Coin';
+import Trade from './Trade/Trade';
 import './App.css';
 
 class App extends Component {
@@ -27,7 +28,30 @@ class App extends Component {
         calendarId: 'uhdj9bf33sav2qqml8gii7l2nutab9l3@import.calendar.google.com',
         maxResults: 4,
         backgroundColor: '#a8312d'
-      }
+      },
+      'Trade': {
+        title: 'Rates',
+        currency: 'GBP',
+        endpointString: 'https://free.currconv.com/api/v7/convert?q=GBP_{symbol}&compact=ultra&apiKey=c5b8b4054f212b5a5e84',
+        properties: [{
+            "id": "naira",
+            "symbol": "NGN",
+            "buy": 1,
+            "sell": 500
+          },
+          {
+            "id": "euros",
+            "symbol": "EUR",
+            "buy": 1,
+            "sell": 2
+        },
+        {
+          "id": "dollar",
+          "symbol": "USD",
+          "buy": 1,
+          "sell": 2
+        }]
+    }    
     }
   }
 
@@ -62,6 +86,7 @@ class App extends Component {
         <Calendar settings={this.settings.Events} />
         <Calendar settings={this.settings.Arsenal} />
         <Coin />
+        <Trade settings={this.settings.Trade} />
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
