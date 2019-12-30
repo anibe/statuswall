@@ -56,9 +56,9 @@ class Trade extends Component {
        return sign + number; 
     }
 
-    function formatMoney(number) {
-        return number.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-    }
+    // function formatMoney(number) {
+    //     return number.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+    // }
 
     stateCoinData[symbol] = {
         'currentPrice': coinPrice, // coinPrice.toFixed(2),
