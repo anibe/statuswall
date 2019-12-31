@@ -42,11 +42,11 @@ class Trade extends Component {
   }
 
   updateCoinData(symbol, data) {
-    let stateCoinData = Object.assign({}, this.state.coinData),
-        coinPrice = data[`${this.settings.settings.currency}_${symbol}`],
-        coinChange = this.state.coinData[symbol].currentPrice - coinPrice,
-        lastUpdated = new Date(Date.now()),
-        coinListHTML = '';
+    const stateCoinData = Object.assign({}, this.state.coinData);
+    const coinPrice = data[`${this.settings.settings.currency}_${symbol}`];
+    const coinChange = this.state.coinData[symbol].currentPrice.length > 0 ? this.state.coinData[symbol].currentPrice - coinPrice : 0;
+    const lastUpdated = new Date(Date.now());
+    let coinListHTML = '';
     
     function formatSign(number) {
         let sign = '';
@@ -61,7 +61,7 @@ class Trade extends Component {
     // }
 
     stateCoinData[symbol] = {
-        'currentPrice': coinPrice, // coinPrice.toFixed(2),
+        'currentPrice': coinPrice.toFixed(2),
         'change': formatSign((coinChange).toFixed(2)),
         'direction': coinChange >= 0 ? 'gain': 'loss',
         'action': this.computeAction(symbol, coinPrice)

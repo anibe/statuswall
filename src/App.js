@@ -41,13 +41,13 @@ class App extends Component {
           {
             "id": "euros",
             "symbol": "EUR",
-            "buy": 1,
+            "buy": 0.5,
             "sell": 2
         },
         {
           "id": "dollar",
           "symbol": "USD",
-          "buy": 1,
+          "buy": 0.5,
           "sell": 2
         }]
     }    
