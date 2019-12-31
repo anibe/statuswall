@@ -3,7 +3,6 @@ import config from './config.json';
 import Clock from './Clock/Clock';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
-import Coin from './Coin/Coin';
 import Trade from './Trade/Trade';
 import './App.css';
 
@@ -12,16 +11,16 @@ class App extends Component {
   constructor(props) {
     super();
     this.settings = {
-      'interval': 10,
+      'interval': 12,
       'Clock': {
         'is24HourFormat': true,
-        'colour':'#ca8fa3'
+        'colour':'#8ba36a'
       },
       'Events': {
         title: 'Events',
         calendarId: 'primary',
         maxResults: 5,
-        backgroundColor: '#68a39d'
+        backgroundColor: '#62689e'
       },
       'Arsenal': {
         title: 'Arsenal',
@@ -85,7 +84,6 @@ class App extends Component {
         <Weather apikey={config.api.weatherunderground.key} />
         <Calendar settings={this.settings.Events} />
         <Calendar settings={this.settings.Arsenal} />
-        <Coin />
         <Trade settings={this.settings.Trade} />
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
