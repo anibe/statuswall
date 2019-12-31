@@ -35,8 +35,8 @@ class App extends Component {
         properties: [{
             "id": "naira",
             "symbol": "NGN",
-            "buy": 1,
-            "sell": 500
+            "buy": 0.9,
+            "sell": 490
           },
           {
             "id": "euros",
