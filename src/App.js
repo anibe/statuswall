@@ -32,6 +32,7 @@ class App extends Component {
         title: 'Rates',
         currency: 'GBP',
         endpointString: 'https://free.currconv.com/api/v7/convert?q=GBP_{symbol}&compact=ultra&apiKey=c5b8b4054f212b5a5e84',
+        intervalMins: 60,
         properties: [{
             "id": "naira",
             "symbol": "NGN",

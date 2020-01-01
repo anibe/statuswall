@@ -20,7 +20,7 @@ class Trade extends Component {
         lastUpdated: Date.now(),
         coinListHTML: ''
     };
-    this.intervalMins = 30;
+    this.intervalMins = props.settings.intervalMins;
   }
 
   refreshFromApi() {
@@ -43,39 +43,31 @@ class Trade extends Component {
 
   updateCoinData(symbol, data) {
     const stateCoinData = Object.assign({}, this.state.coinData);
-    const coinPrice = data[`${this.settings.settings.currency}_${symbol}`];
+    const coinPrice = data[`${this.settings.settings.currency}_${symbol}`] ? data[`${this.settings.settings.currency}_${symbol}`].toFixed(2) : '--.--';
     const coinChange = this.state.coinData[symbol].currentPrice.length > 0 ? this.state.coinData[symbol].currentPrice - coinPrice : 0;
     const lastUpdated = new Date(Date.now());
     let coinListHTML = '';
     
     function formatSign(number) {
-        let sign = '';
-        if (parseFloat(number) >= 0) {
-            sign = '+';
-        }
-       return sign + number; 
+       return parseFloat(number) >= 0 ? `+${number}` : `${number}`;
     }
 
-    // function formatMoney(number) {
-    //     return number.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-    // }
-
     stateCoinData[symbol] = {
-        'currentPrice': coinPrice.toFixed(2),
+        'currentPrice': coinPrice,
         'change': formatSign((coinChange).toFixed(2)),
         'direction': coinChange >= 0 ? 'gain': 'loss',
         'action': this.computeAction(symbol, coinPrice)
     };
     
     Object.keys(this.state.coinData).forEach(function (key, index) {
-        coinListHTML += `<li class=${this.state.coinData[key].action}><div class="symbol">${key}</div> <h4 class="prices">£${this.state.coinData[key].currentPrice} <span class=${this.state.coinData[key].direction}>${this.state.coinData[key].change}</span> <span class="action">${this.state.coinData[key].action}</span></h4></li>\n`;
+        coinListHTML += `<li class=${this.state.coinData[key].action}><div class="symbol">${key}</div> <h4 class="prices">£${this.state.coinData[key].currentPrice} <span class=${this.state.coinData[key].direction}>${this.state.coinData[key].change}</span> <span class="action">${this.state.coinData[key].action}</span></h4></li>\n`;        
     }.bind(this));
     
     this.setState({ 
         coinData: stateCoinData,
         lastUpdated: lastUpdated.toGMTString(),
         coinListHTML
-    });    
+    });        
   }
 
   computeAction(symbol, price) {
@@ -103,7 +95,7 @@ class Trade extends Component {
   componentDidMount() {
     this.refreshFromApi();
     this.timerID = setInterval(() => this.refreshFromApi(),
-        1000*60*this.intervalMins
+        1000 * 60 * this.intervalMins
     );    
   }
 
