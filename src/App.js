@@ -32,24 +32,24 @@ class App extends Component {
         title: 'Rates',
         currency: 'GBP',
         endpointString: 'https://free.currconv.com/api/v7/convert?q=GBP_{symbol}&compact=ultra&apiKey=c5b8b4054f212b5a5e84',
-        intervalMins: 60,
+        intervalMins: 90,
         properties: [{
             "id": "naira",
             "symbol": "NGN",
             "buy": 0.9,
-            "sell": 490
+            "sell": 480
           },
           {
             "id": "euros",
             "symbol": "EUR",
             "buy": 0.5,
-            "sell": 2
+            "sell": 1.4
         },
         {
           "id": "dollar",
           "symbol": "USD",
           "buy": 0.5,
-          "sell": 2
+          "sell": 1.8
         }]
     }    
     }
