@@ -4,6 +4,7 @@ import Clock from './Clock/Clock';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
 import Trade from './Trade/Trade';
+import Trade from './Coin/Coin';
 import './App.css';
 
 class App extends Component {
@@ -86,6 +87,7 @@ class App extends Component {
         <Calendar settings={this.settings.Events} />
         <Calendar settings={this.settings.Arsenal} />
         <Trade settings={this.settings.Trade} />
+        <Coin />
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
     );
