@@ -4,7 +4,7 @@ import Clock from './Clock/Clock';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
 import Trade from './Trade/Trade';
-import Trade from './Coin/Coin';
+import Coin from './Coin/Coin';
 import './App.css';
 
 class App extends Component {
