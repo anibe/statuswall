@@ -134,11 +134,16 @@ class Weather extends Component {
 
         return (
             <div className="Weather applet" style={inlineStyles}>
-                <div className="main-title">
-                    {this.state.forecast.today[0]}&deg;
+                <div className="dates-row top-dates">
+                    <div className="data">
+                        <div className="temp">
+                            <div className="main-title">{this.state.forecast.today[0]}&deg;</div>
+                            <span className="condition">{this.state.forecast.today[1]}</span>
+                        </div>
+                        <div className={`no-font icon big-icon ${this.mapIcons(this.state.forecast.today[1])}`}>&nbsp;</div>
+                    </div>
                 </div>
-                <div className={`no-font icon ${this.mapIcons(this.state.forecast.today[1])}`}>&nbsp;</div>
-                <div className="other-days">
+                <div className="dates-row bottom-dates">
                     <div className="tomorrow">
                         <div className="heading">Tomorrow</div>
                         <div className="data">

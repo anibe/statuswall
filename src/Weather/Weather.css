@@ -5,35 +5,64 @@
     background-size: contain;
 }
 
-.Weather .other-days {
+.App .Weather.applet.active {
+    justify-content: flex-end;
+}
+
+.Weather .dates-row {
     display: flex;
     align-content: space-around;
     align-items: flex-end;
     opacity: 0.8;
 }
 
-.Weather .other-days .data {
+.Weather .main-title {
+    line-height: 0.4;
+}
+
+.Weather .dates-row .data {
     display: flex;
-    margin: 0 70px;
+    margin: 0 25%;
     justify-content: space-evenly;
 }
 
-.Weather .other-days > * {
+.Weather .dates-row > * {
     flex-grow: 1;
     color: #fff;
     font-size: 5.5rem;
 }
 
-.Weather .other-days .heading {
+.Weather .dates-row .heading {
     opacity: 7;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.Weather .other-days .small-icon {
+.Weather .condition {
+    line-height: 12px;
+    font-size: 3rem;
+}
+
+.Weather .dates-row .small-icon {
     /* transform: translateY(-130px) translateX(120px) scale(4); */
     /* min-height: 50px; */
     background-size: contain;
     width: 50%;
+}
+
+.Weather .dates-row .big-icon {
+    /* transform: translateY(-130px) translateX(120px) scale(4); */
+    /* min-height: 50px; */
+    background-size: contain;
+    width: 35%;
+}
+
+.Weather .bottom-dates {
+    margin-top: 1.5rem;
+}
+
+.Weather .bottom-dates .condition {
+    font-size: 2rem;
+    display: block;
 }
 
 .partlycloudy {
