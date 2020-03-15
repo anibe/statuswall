@@ -69,3 +69,7 @@
     background: none;
     border: none;
 }
+
+.Calendar .btn-autorize {
+    font-size: 1.5rem;
+}
