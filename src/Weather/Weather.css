@@ -103,9 +103,11 @@
 .fog {
     background: url('fog.svg') no-repeat 50%;
 }
-
 .sunnyrain {
     background: url('sunnyrain.svg') no-repeat 50%;
+}
+.windy {
+    background: url('windy.svg') no-repeat 50%;
 }
 
 .credits {
