@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 import './Calendar.css';
 
 // Client ID and API key from the Developer Console
-var CLIENT_ID = '288482386496-vtni4bnou340b2jj49p008nqn66idub2.apps.googleusercontent.com';
+// var CLIENT_ID = '288482386496-vtni4bnou340b2jj49p008nqn66idub2.apps.googleusercontent.com';
+var API_KEY = 'AIzaSyAax0Qi3btCt2kq_LYWz2XnDqicIDv19D8';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -47,7 +48,8 @@ class Calendar extends Component {
 
         window.gapi.client.init({
             discoveryDocs: DISCOVERY_DOCS,
-            clientId: CLIENT_ID,
+            // clientId: CLIENT_ID,
+            apiKey: API_KEY,
             scope: SCOPES
         }).then(function () {
             // Listen for sign-in state changes.
