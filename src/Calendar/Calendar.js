@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import './Calendar.css';
 
 // Client ID and API key from the Developer Console
-var CLIENT_ID = '288482386496-vtni4bnou340b2jj49p008nqn66idub2.apps.googleusercontent.com';
+var CLIENT_ID = '720303548749-hh9cbm907rkdtchf85g4ntae7emivnqh.apps.googleusercontent.com';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
