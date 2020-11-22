@@ -8,7 +8,7 @@ class Weather extends Component {
         this.apikey = 'e9jdE9IoDZTAS2lZippALSfGar8eAiIy'; // props.apikey;
         // this.apiEndpoint = 'http://api.wunderground.com/api/'+ this.apikey +'/forecast/q/';
         this.location = 328487; //'UK/Hemel%20Hempstead';
-        this.apiEndpoint = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.location}?apikey=${this.apikey}&metric=true`;
+        this.apiEndpoint = `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${this.location}?apikey=${this.apikey}&metric=true`;
         this.state = {
             forecast: {
                 today: [],
