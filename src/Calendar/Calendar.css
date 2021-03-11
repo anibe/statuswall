@@ -20,7 +20,7 @@
 .Calendar h4 span.time {
     background-color: rgba(0, 0, 0, 0.2);
     display: inline-block;
-    font-size: 0.75em;
+    font-size: 0.85em;
     padding: 4px;
     margin-left: 0.5em;
 }
@@ -31,7 +31,7 @@
 
 .Calendar .dates,
 .Calendar li {
-    font-size: 4vw;
+    font-size: 4.2vw;
 }
 
 .Calendar li {
