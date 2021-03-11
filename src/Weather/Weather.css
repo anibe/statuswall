@@ -29,7 +29,7 @@
 .Weather .dates-row > * {
     flex-grow: 1;
     color: #fff;
-    font-size: 2.5rem;
+    font-size: 3.2rem;
 }
 
 .Weather .dates-row .heading {

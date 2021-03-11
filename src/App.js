@@ -20,13 +20,13 @@ class App extends Component {
       'Events': {
         title: 'Events',
         calendarId: 'primary',
-        maxResults: 4,
+        maxResults: 6,
         backgroundColor: '#62689e'
       },
       'Arsenal': {
         title: 'Arsenal',
         calendarId: 'uhdj9bf33sav2qqml8gii7l2nutab9l3@import.calendar.google.com',
-        maxResults: 4,
+        maxResults: 5,
         backgroundColor: '#a8312d'
       },
       'Trade': {
