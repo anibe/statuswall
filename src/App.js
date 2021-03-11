@@ -20,7 +20,7 @@ class App extends Component {
       'Events': {
         title: 'Events',
         calendarId: 'primary',
-        maxResults: 6,
+        maxResults: 5,
         backgroundColor: '#62689e'
       },
       'Arsenal': {

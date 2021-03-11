@@ -29,10 +29,14 @@
     padding: 0;
 }
 
+.Calendar .dates,
+.Calendar li {
+    font-size: 4vw;
+}
+
 .Calendar li {
     color: rgb(255,255,255);
     display: flex;
-    font-size: 3vw;
     text-align: left;
     padding: 15px 30px;
     font-family: Arial, Helvetica, sans-serif;
@@ -42,7 +46,6 @@
 .Calendar .dates {
     width: 24%;
     flex: 0 1 24%;
-    font-size: 3vw;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
