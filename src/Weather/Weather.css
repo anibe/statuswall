@@ -1,7 +1,7 @@
 .Weather .icon {
     /* transform: translateY(100px) scale(8); */
     min-height: 140px;
-    margin-top: -80px;
+    margin-top: -60px;
     background-size: contain;
 }
 
@@ -29,7 +29,7 @@
 .Weather .dates-row > * {
     flex-grow: 1;
     color: #fff;
-    font-size: 5.5rem;
+    font-size: 2.5rem;
 }
 
 .Weather .dates-row .heading {
@@ -39,7 +39,7 @@
 
 .Weather .condition {
     line-height: 12px;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .Weather .dates-row .small-icon {
@@ -53,11 +53,7 @@
     /* transform: translateY(-130px) translateX(120px) scale(4); */
     /* min-height: 50px; */
     background-size: contain;
-    width: 35%;
-}
-
-.Weather .bottom-dates {
-    margin-top: 1.5rem;
+    width: 28%;
 }
 
 .Weather .bottom-dates .condition {

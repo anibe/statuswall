@@ -28,8 +28,8 @@
 
 .App .applet.float:not(.active) {
   background: transparent !important;
-  font-size: 4rem;
-  margin-top: 30px;
+  font-size: 2.3rem;
+  margin-top: 10px;
   position: fixed;
   display: block;
   text-align: center;
@@ -77,11 +77,11 @@
 }
 
 .App .applet.active .main-title {
-  font-size: 24vw;
+  font-size: 18vw;
 }
 
 .App .applet.active .sub-title {
-  font-size: 12vw;
+  font-size: 8vw;
 }
 
 .App .applet.in-progress {

@@ -3,7 +3,7 @@ import config from './config.json';
 import Clock from './Clock/Clock';
 import Calendar from './Calendar/Calendar';
 import Weather from './Weather/Weather';
-import Trade from './Trade/Trade';
+// import Trade from './Trade/Trade';
 // import Coin from './Coin/Coin';
 import './App.css';
 
@@ -20,7 +20,7 @@ class App extends Component {
       'Events': {
         title: 'Events',
         calendarId: 'primary',
-        maxResults: 6,
+        maxResults: 4,
         backgroundColor: '#62689e'
       },
       'Arsenal': {
@@ -86,7 +86,7 @@ class App extends Component {
         <Weather apikey={config.api.weatherunderground.key} />
         <Calendar settings={this.settings.Events} />
         <Calendar settings={this.settings.Arsenal} />
-        <Trade settings={this.settings.Trade} />
+        {/* <Trade settings={this.settings.Trade} /> */}
         {/* <Coin /> */}
         <Clock format={ settings.Clock.is24HourFormat } colour={settings.Clock.colour} />
       </div>
