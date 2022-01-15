@@ -12,7 +12,7 @@
     "hoek": "^5.0.3",
     "lodash": "^4.17.19",
     "macaddress": "^0.2.9",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "merge": "^2.1.1",
     "randomatic": "^3.1.1",
     "react-scripts": "^3.2.0",
