@@ -16,7 +16,7 @@
     "merge": "^2.1.1",
     "randomatic": "^3.1.1",
     "react-scripts": "^3.2.0",
-    "url-parse": "^1.4.4"
+    "url-parse": "^1.5.6"
   },
   "scripts": {
     "start": "react-scripts start",
