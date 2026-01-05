@@ -23,24 +23,24 @@ class Weather extends Component {
     getForecast() {
         const rightNow = new Date(),
             isNight = !(rightNow.getHours() >= 7 && rightNow.getHours() < 19);
-        function reqListener (e) {
-            const data = JSON.parse(e.target.responseText);
-            this.setState({
-                forecast: {    
-                    today: [parseInt(data.DailyForecasts[0].Temperature.Maximum.Value, 10), isNight ? data.DailyForecasts[0].Night.IconPhrase : data.DailyForecasts[0].Day.IconPhrase],
-                    tomorrow: [parseInt(data.DailyForecasts[1].Temperature.Maximum.Value, 10), isNight ? data.DailyForecasts[1].Night.IconPhrase : data.DailyForecasts[1].Day.IconPhrase],
-                    nexttomorrow: [parseInt(data.DailyForecasts[2].Temperature.Maximum.Value, 10), isNight ? data.DailyForecasts[2].Night.IconPhrase : data.DailyForecasts[2].Day.IconPhrase]
-                },
-                timeOfDay: isNight ? 'night' : 'day'
+
+        fetch(this.apiEndpoint)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    forecast: {
+                        today: [parseInt(data.DailyForecasts[0].Temperature.Maximum.Value, 10), isNight ? data.DailyForecasts[0].Night.IconPhrase : data.DailyForecasts[0].Day.IconPhrase],
+                        tomorrow: [parseInt(data.DailyForecasts[1].Temperature.Maximum.Value, 10), isNight ? data.DailyForecasts[1].Night.IconPhrase : data.DailyForecasts[1].Day.IconPhrase],
+                        nexttomorrow: [parseInt(data.DailyForecasts[2].Temperature.Maximum.Value, 10), isNight ? data.DailyForecasts[2].Night.IconPhrase : data.DailyForecasts[2].Day.IconPhrase]
+                    },
+                    timeOfDay: isNight ? 'night' : 'day'
+                });
+                this.saveForecast();
+                console.log('Weather updated from network '+ rightNow);
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
             });
-            this.saveForecast();
-            console.log('Weather updated from network '+ rightNow);
-        }
-        
-        var oReq = new XMLHttpRequest(); // TODO: Consider fetch polyfill
-        oReq.addEventListener("load", reqListener.bind(this));
-        oReq.open('GET', this.apiEndpoint);
-        oReq.send();
     }
 
     saveForecast() {
